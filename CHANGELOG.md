@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.1 — 2026-07-12
+
+- Human-readable `displayName` ("AI-First Product Manager" / "AI-First Product Builder") in both plugin manifests and marketplace entries — shown in the `/plugin` picker; install names (`afpm`, `afpb`) unchanged.
+
 ## v0.2.0 — 2026-07-12
 
 - afpm: `/afpm-tutorial` workflow skill — guided step-by-step tour of the discovery loop with the user's own product; infers the current stage from `product/` contents (no state files), one stage per invocation. Companion written walkthrough in `afpm/TUTORIAL.md`, linked from the README.

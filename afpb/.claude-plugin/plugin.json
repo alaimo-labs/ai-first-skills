@@ -1,6 +1,7 @@
 {
   "name": "afpb",
-  "version": "0.2.0",
+  "displayName": "AI-First Product Builder",
+  "version": "0.2.1",
   "description": "AI-First Product Builder skills: falsifiable hypotheses, exposure plans, and the hypothesis-to-evidence experiment loop for prototypes built with coding agents.",
   "author": {
     "name": "Martin Alaimo",

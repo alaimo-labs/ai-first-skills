@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "ai-first-skills",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Agent skills for AI-First product work: synthetic-user discovery, spec critique, exposure planning, and evidence-based product building. Companion toolkit for the Alaimo Labs AI-First Product Manager and AI-First Product Builder programs.",
   "owner": {
     "name": "Martin Alaimo",
@@ -11,12 +11,14 @@
   "plugins": [
     {
       "name": "afpm",
+      "displayName": "AI-First Product Manager",
       "description": "AI-First Product Manager skills: synthetic personas, persona interviews (exploration and validation), insight extraction, persona critique panels, and exposure plans.",
       "source": "./afpm",
       "category": "product-management"
     },
     {
       "name": "afpb",
+      "displayName": "AI-First Product Builder",
       "description": "AI-First Product Builder skills: falsifiable hypotheses, exposure plans, and the hypothesis-to-evidence experiment loop for prototypes built with coding agents.",
       "source": "./afpb",
       "category": "product-management"
