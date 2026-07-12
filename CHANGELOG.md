@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.0 — 2026-07-12
+
+- afpm: renamed `/afpm-tutorial` → `/afpm-guide-me` — the skill is a resumable guide (run it after installing and any time you wonder what's next), not a one-shot tutorial. The old command no longer exists.
+
 ## v0.2.2 — 2026-07-12
 
 - afpm: `/afpm-tutorial` no longer treats repo-derived product context as fact — it presents what it inferred (with sources) and asks the user to confirm or correct before writing the overview.

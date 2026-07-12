@@ -1,11 +1,11 @@
 ---
-name: afpm-tutorial
-description: Guided step-by-step tour of the AFPM discovery loop with your own product — infers where you are from product/ and teaches the next step
+name: afpm-guide-me
+description: Guided step-by-step tour of the AFPM discovery loop with your own product — run it right after installing, and any time you wonder what's next; infers where you are from product/ and teaches the next step
 argument-hint: "[status | stage name or number, e.g. 'status' or 'spec']"
 disable-model-invocation: true
 ---
 
-# /afpm-tutorial
+# /afpm-guide-me
 
 Walk the user through the full AFPM discovery loop — with their own product, one stage per invocation. The tutorial produces no artifacts of its own beyond stage 0: every step's output is a standard `product/` artifact created by the user running the real commands.
 
@@ -43,7 +43,7 @@ Artifacts default to `product/…`; if this repo already has a place for product
 
 4. **Teach the current stage** (guidance per stage below): why it matters in one short paragraph, then exactly what to do.
 
-5. **Stop.** For stages with a command, hand the user the exact command to run and end the turn — never run another workflow skill on their behalf; running the command themselves is how they learn it. Tell them to come back with `/afpm-tutorial` when the stage's artifact exists.
+5. **Stop.** For stages with a command, hand the user the exact command to run and end the turn — never run another workflow skill on their behalf; running the command themselves is how they learn it. Tell them to come back with `/afpm-guide-me` when the stage's artifact exists.
 
 ## Stage guidance
 

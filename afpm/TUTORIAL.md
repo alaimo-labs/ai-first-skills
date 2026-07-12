@@ -2,7 +2,7 @@
 
 This walkthrough takes you through the full AFPM loop with **your own product**: by the end you'll have a persona set, interview transcripts, grounded insights, a critiqued spec, and an exposure plan — all as markdown files in your repo, every decision traceable back to a quote.
 
-Prefer to be guided in-session? Run `/afpm-tutorial` in Claude Code — it detects where you are from your `product/` directory and teaches one stage at a time. This document covers the same flow for reading ahead.
+Prefer to be guided in-session? Run `/afpm-guide-me` in Claude Code — it detects where you are from your `product/` directory and teaches one stage at a time. This document covers the same flow for reading ahead.
 
 Two conventions apply throughout:
 
