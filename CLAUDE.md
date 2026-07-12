@@ -61,6 +61,26 @@ product/
 
 Workflow skills create these directories on first use. If the repo has an existing layout, skills adapt to it rather than forcing this one.
 
+## Local Development & Testing
+
+Never cut a release just to test a change. Two speeds:
+
+- **Develop:** load the working copy directly in any test repo — no install, no cache, no version bump:
+
+  ```bash
+  cd ~/some-test-repo
+  claude --plugin-dir /path/to/ai-first-skills/afpm   # repeat the flag for afpb
+  ```
+
+  Edit skills → start a new session with `--plugin-dir` → test. Disable the
+  marketplace-installed copy in that repo first (`/plugin` → disable) so only
+  one version of the plugin is loaded.
+
+- **Release:** only when a change should reach users (see Versioning & Releases).
+  Marketplace installs are cached copies pinned to the explicit `version` in
+  `plugin.json` — pushing commits without a version bump changes nothing for
+  installed users; that's intentional.
+
 ## Versioning & Releases
 
 - `CHANGELOG.md` is the source of truth. Newest `## vX.Y.Z — YYYY-MM-DD` heading = released version.
