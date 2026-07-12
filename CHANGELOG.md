@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.2 — 2026-07-12
+
+- afpm: `/afpm-tutorial` no longer treats repo-derived product context as fact — it presents what it inferred (with sources) and asks the user to confirm or correct before writing the overview.
+
 ## v0.2.1 — 2026-07-12
 
 - Human-readable `displayName` ("AI-First Product Manager" / "AI-First Product Builder") in both plugin manifests and marketplace entries — shown in the `/plugin` picker; install names (`afpm`, `afpb`) unchanged.

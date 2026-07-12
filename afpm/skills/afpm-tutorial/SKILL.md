@@ -47,7 +47,11 @@ Artifacts default to `product/…`; if this repo already has a place for product
 
 ## Stage guidance
 
-- **Stage 0 — Ground.** Interview the user briefly (a few questions, not a form): product name, what it is, who it's for, and — the question that pays off later — what they currently believe about their users but haven't verified. Draft `product/overview.md`, show it, confirm, save. This is the context every other skill reads.
+- **Stage 0 — Ground.** The goal is `product/overview.md`: product name, what it is, who it's for, and — the question that pays off later — what the user currently believes about their users but hasn't verified. Two paths to it:
+  - **The repo already has product context** (README, specs, docs): read it, but treat it as hypothesis, not fact. Present what was inferred point by point, naming the source file for each ("from `docs/specs/README.md` I gather that…"), and ask the user to confirm or correct it before any of it goes into the overview. Documents can be stale, aspirational, or describe a direction that has already changed — only the user knows which. Then ask only for what the docs can't contain (the unverified beliefs above all).
+  - **No context anywhere:** interview the user briefly (a few questions, not a form).
+
+  Either way: draft the overview, show it, confirm, save. This is the context every other skill reads.
 
 - **Stage 1 — Personas.** Explain in two sentences: synthetic personas are archetype hypotheses, not real users — their value is forcing you to look at your product through eyes that aren't yours. Hand them `/generate-personas` (default 3 is fine; they can name a segment focus). Suggest they check the set for diversity before accepting.
 
@@ -69,5 +73,6 @@ Artifacts default to `product/…`; if this repo already has a place for product
 ## Rules
 
 - Never invoke another workflow skill; only name the command and let the user run it.
+- Anything inferred from repo files is an assumption until the user confirms it — present it with its source and ask for confirmation/correction before writing it into an artifact.
 - One stage per invocation — resist teaching ahead. Depth lives in the knowledge skills, which load themselves when the real commands run; the tutorial teaches the loop, not the disciplines.
 - All conversation and stage 0/4 artifacts in the language of the conversation.
