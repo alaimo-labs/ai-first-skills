@@ -1,0 +1,21 @@
+{
+  "name": "afpb",
+  "version": "0.1.0",
+  "description": "AI-First Product Builder skills: falsifiable hypotheses, exposure plans, and the hypothesis-to-evidence experiment loop for prototypes built with coding agents.",
+  "author": {
+    "name": "Martin Alaimo",
+    "email": "malaimo@gmail.com",
+    "url": "https://alaimolabs.com"
+  },
+  "keywords": [
+    "product-building",
+    "prototyping",
+    "hypothesis",
+    "experiments",
+    "exposure-plan",
+    "evidence",
+    "validation"
+  ],
+  "homepage": "https://alaimolabs.com/es/courses/ai-first-product-builder",
+  "license": "MIT"
+}

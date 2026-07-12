@@ -1,0 +1,22 @@
+{
+  "name": "afpm",
+  "version": "0.1.0",
+  "description": "AI-First Product Manager skills: synthetic personas, persona interviews (exploration and validation), insight extraction, persona critique panels, and exposure plans.",
+  "author": {
+    "name": "Martin Alaimo",
+    "email": "malaimo@gmail.com",
+    "url": "https://alaimolabs.com"
+  },
+  "keywords": [
+    "product-management",
+    "product-discovery",
+    "synthetic-users",
+    "personas",
+    "user-interviews",
+    "insights",
+    "exposure-plan",
+    "validation"
+  ],
+  "homepage": "https://alaimolabs.com/es/courses/ai-first-product-manager",
+  "license": "MIT"
+}
