@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- afpm: `/afpm-tutorial` workflow skill — guided step-by-step tour of the discovery loop with the user's own product; infers the current stage from `product/` contents (no state files), one stage per invocation. Companion written walkthrough in `afpm/TUTORIAL.md`, linked from the README.
 - Initial scaffold: marketplace with `afpm` and `afpb` plugins.
 - afpm: knowledge skills `synthetic-personas`, `synthetic-interviews`, `insight-extraction`, `persona-critique`, `exposure-plans`; workflow skills `/generate-personas`, `/interview-persona`, `/extract-insights`, `/critique-spec`, `/slice-feature`.
 - afpb: knowledge skills `falsifiable-hypotheses`, `exposure-plans`; workflow skills `/formulate-hypothesis`, `/plan-exposure`.

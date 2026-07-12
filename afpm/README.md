@@ -16,12 +16,15 @@ From the `ai-first-skills` marketplace in Claude Code:
 /plugin install afpm
 ```
 
+New here? Run `/afpm-tutorial` — it walks you through the full discovery loop with your own product, one stage at a time. Or read [TUTORIAL.md](TUTORIAL.md) for the same flow on paper.
+
 ## Workflows
 
 User-invoked skills — you trigger them as slash commands; they never auto-load.
 
 | Workflow             | What it does                                                  |
 | -------------------- | ------------------------------------------------------------- |
+| `/afpm-tutorial`     | Guided tour of the discovery loop, resumable at any stage     |
 | `/generate-personas` | Generate a diverse set of synthetic personas for your product |
 | `/interview-persona` | Interview a persona — exploration or validation mode          |
 | `/extract-insights`  | Extract actionable insights from interview transcripts        |
