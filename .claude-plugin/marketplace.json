@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "ai-first-skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Agent skills for AI-First product work: synthetic-user discovery, spec critique, exposure planning, and evidence-based product building. Companion toolkit for the Alaimo Labs AI-First Product Manager and AI-First Product Builder programs.",
   "owner": {
     "name": "Martin Alaimo",
