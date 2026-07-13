@@ -44,4 +44,4 @@ When multiple personas critique the same document, add a synthesis section after
 - Conflicts between personas (design tensions the user must decide on)
 - The 2–3 highest-impact changes suggested by the panel overall
 
-Save panels to `product/insights/critique-{spec-slug}-{date}.md`.
+Save panels to `product/insights/{YYYY-MM-DD-HHMM}-critique-{spec-slug}.md`.

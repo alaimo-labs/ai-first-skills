@@ -35,4 +35,4 @@ If the interviewer asks leading questions ("wouldn't it be great if…?", "would
 
 ## Transcript
 
-When the interview ends (the interviewer says so, or clearly wraps up), offer to save the full transcript to `product/interviews/{persona-slug}-{date}.md` with a header noting persona, mode, and date. Transcripts feed the `insight-extraction` skill.
+When the interview ends (the interviewer says so, or clearly wraps up), offer to save the full transcript to `product/interviews/{YYYY-MM-DD-HHMM}-{persona-slug}.md` (date-first so transcripts sort chronologically) with a header noting persona, mode, and date. Transcripts feed the `insight-extraction` skill.

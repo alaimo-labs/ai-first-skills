@@ -46,7 +46,7 @@ One insight per section:
 > Evidence: "{supporting quote or paraphrase from the transcript}" — {persona/interviewee}
 ```
 
-Save to `product/insights/{topic-or-persona-slug}-{date}.md`, with a header listing the source transcript(s). When extracting across multiple interviews, note which insights recur across interviewees — recurrence is the strongest prioritization signal.
+Save to `product/insights/{YYYY-MM-DD-HHMM}-{topic-or-persona-slug}.md` (date-first so insight files sort chronologically), with a header listing the source transcript(s). When extracting across multiple interviews, note which insights recur across interviewees — recurrence is the strongest prioritization signal.
 
 ## Caveat for synthetic sources
 

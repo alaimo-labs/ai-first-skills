@@ -53,11 +53,13 @@ Skills read and write product artifacts in the user's working repo:
 product/
 ├── overview.md          <- product context (name, description, target users)
 ├── personas/{slug}.md   <- one file per persona
-├── interviews/          <- interview transcripts ({persona-slug}-{date}.md)
-├── insights/            <- extracted insights
-├── specs/               <- feature specs
-└── exposure-plans/      <- exposure plans ({spec-slug}.md)
+├── interviews/          <- interview transcripts ({YYYY-MM-DD-HHMM}-{persona-slug}.md)
+├── insights/            <- extracted insights ({YYYY-MM-DD-HHMM}-{slug}.md; critiques: {YYYY-MM-DD-HHMM}-critique-{spec-slug}.md)
+├── specs/               <- feature specs ({YYYY-MM-DD-HHMM}-{slug}.md)
+└── exposure-plans/      <- exposure plans ({YYYY-MM-DD-HHMM}-{spec-slug}.md)
 ```
+
+Every artifact except `overview.md` and personas carries a `{YYYY-MM-DD-HHMM}-` prefix so listings sort chronologically. The timestamp is the creation date: revisions (e.g. a spec after a critique panel) edit the file in place without renaming.
 
 Workflow skills create these directories on first use. If the repo has an existing layout, skills adapt to it rather than forcing this one.
 

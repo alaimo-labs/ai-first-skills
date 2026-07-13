@@ -19,4 +19,4 @@ Input: $ARGUMENTS
 
 3. **Cross-interview synthesis.** When multiple transcripts are involved, flag insights that recur across interviewees.
 
-4. **Save** to `product/insights/{slug}-{YYYY-MM-DD}.md` with a header listing sources and `source: synthetic` when applicable (include the one-time reminder that synthetic insights are hypotheses to verify with real users).
+4. **Save** to `product/insights/{YYYY-MM-DD-HHMM}-{slug}.md` with a header listing sources and `source: synthetic` when applicable (include the one-time reminder that synthetic insights are hypotheses to verify with real users).

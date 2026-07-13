@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # /afpm-guide-me
 
-Walk the user through the full AFPM discovery loop — with their own product, one stage per invocation. The tutorial produces no artifacts of its own beyond stage 0: every step's output is a standard `product/` artifact created by the user running the real commands.
+Walk the user through the full AFPM discovery loop — with their own product, one stage per invocation. The guide produces no artifacts of its own beyond stage 0: every step's output is a standard `product/` artifact created by the user running the real commands.
 
 Input: $ARGUMENTS
 
@@ -19,9 +19,9 @@ Input: $ARGUMENTS
 | 1 | Personas  | `/generate-personas`                     | `product/personas/*.md`               |
 | 2 | Interview | `/interview-persona <name> exploration`  | `product/interviews/*.md`             |
 | 3 | Insights  | `/extract-insights`                      | `product/insights/*.md`               |
-| 4 | Spec      | (this tutorial guides it)                | `product/specs/{slug}.md`             |
-| 5 | Critique  | `/critique-spec <spec>`                  | `product/insights/critique-*.md`      |
-| 6 | Slice     | `/slice-feature <spec>`                  | `product/exposure-plans/{spec-slug}.md` |
+| 4 | Spec      | `/write-spec`                            | `product/specs/*-{slug}.md`           |
+| 5 | Critique  | `/critique-spec <spec>`                  | `product/insights/*-critique-*.md`    |
+| 6 | Slice     | `/slice-feature <spec>`                  | `product/exposure-plans/*-{spec-slug}.md` |
 
 Artifacts default to `product/…`; if this repo already has a place for product docs, that wins — detect and use it consistently.
 
@@ -33,10 +33,10 @@ Artifacts default to `product/…`; if this repo already has a place for product
    - no `product/overview.md` (or equivalent product context) → stage 0
    - overview but no personas → stage 1
    - personas but no interview transcripts → stage 2
-   - transcripts but no insight files (ignore `critique-*` files) → stage 3
+   - transcripts but no insight files (ignore `*-critique-*` files) → stage 3
    - insights but no specs → stage 4
-   - a spec but no `critique-{spec-slug}-*` for it → stage 5
-   - critique but no `exposure-plans/{spec-slug}.md` → stage 6
+   - a spec but no `*-critique-{spec-slug}*` for it → stage 5
+   - critique but no `exposure-plans/*-{spec-slug}.md` → stage 6
    - exposure plan exists → wrap-up
 
 3. **Acknowledge progress.** One or two lines: what the user has already built and where they are in the loop. On the first run, also frame the big picture in a short paragraph: AFPM is an evidence loop — every stage reads the previous stage's artifact, so every product decision stays traceable to a quote from an interview.
@@ -59,7 +59,7 @@ Artifacts default to `product/…`; if this repo already has a place for product
 
 - **Stage 3 — Insights.** Explain: raw transcripts don't drive decisions, grounded insights do — each one tied to quotes, actionable, prioritized. Hand them `/extract-insights` (with no arguments it takes the latest transcript; naming several files or a persona pulls in more). Note the caveat the skill itself will raise: synthetic insights are hypotheses to verify with real users.
 
-- **Stage 4 — Spec.** No command exists for this stage — guide it directly, in conversation. Have the user pick the insight they'd bet on, then help them draft a short feature spec in `product/specs/{slug}.md`: the problem (citing the insight and its quotes), the proposed feature, who it's for, and — required, because `/slice-feature` will look for it — an explicit falsifiable hypothesis ("We believe {users} will {behavior} because {motivation}; we're wrong if {observable signal}"). Show the draft, confirm, save.
+- **Stage 4 — Spec.** Explain in two sentences: this is where discovery turns into a bet — the spec picks one insight and commits to a feature, a user journey, critical stories with acceptance criteria, and a falsifiable hypothesis, all still traceable to interview quotes. Hand them `/write-spec` (it proposes the highest-impact insight to bet on; they can also name one). Tell them the hypothesis is the part to sweat — `/slice-feature` will decompose it later.
 
 - **Stage 5 — Critique.** Explain: before building anything, let the personas attack the spec — cheaper than real users finding the same holes later. Hand them `/critique-spec <spec file>`. When the panel is done, have them actually revise the spec from the 2–3 highest-impact changes (offer to re-run the critique on the revision if they want a second pass).
 

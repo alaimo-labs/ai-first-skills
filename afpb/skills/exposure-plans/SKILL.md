@@ -75,7 +75,7 @@ Otherwise recommend one: **feature flags** by default; **incremental** only when
 
 ## Output
 
-Markdown, saved to `product/exposure-plans/{spec-slug}.md`. No preamble, no closing fluff — the document IS the response.
+Markdown, saved to `product/exposure-plans/{YYYY-MM-DD-HHMM}-{spec-slug}.md` (timestamp = creation date; revise in place without renaming). No preamble, no closing fluff — the document IS the response.
 
 ## Anti-patterns
 

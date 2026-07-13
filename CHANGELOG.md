@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- afpm: new `feature-specs` knowledge skill (spec structure: evidence-cited problem, user journey, 3–5 critical user stories with observable acceptance criteria, falsifiable hypothesis, assumptions) and `/write-spec` workflow skill that drafts a spec from insights and personas. Stage 4 of `/afpm-guide-me` and TUTORIAL.md now point to `/write-spec` — every stage of the loop has a command.
+- afpm + afpb: dated artifacts now use date-first filenames — `{YYYY-MM-DD-HHMM}-{slug}.md` (critiques: `{YYYY-MM-DD-HHMM}-critique-{spec-slug}.md`) — so listings sort chronologically and same-day files don't collide. Applies to interviews, insights, critiques, specs, and exposure plans; the timestamp is the creation date and revisions edit in place without renaming. Only `overview.md` and personas stay undated.
+
 ## v0.3.0 — 2026-07-12
 
 - afpm: renamed `/afpm-tutorial` → `/afpm-guide-me` — the skill is a resumable guide (run it after installing and any time you wonder what's next), not a one-shot tutorial. The old command no longer exists.

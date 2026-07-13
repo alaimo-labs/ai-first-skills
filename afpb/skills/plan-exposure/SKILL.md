@@ -19,6 +19,6 @@ Input: $ARGUMENTS
 
 3. **Build the plan** per the `exposure-plans` skill: sequenced falsifiable beliefs, 1–5 accumulative user-visible levels with belief/audience/duration/validation, mechanism fit note, parallel validations, open questions. Same language as the source document.
 
-4. **Save** to `product/exposure-plans/{slug}.md`.
+4. **Save** to `product/exposure-plans/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date; revise in place without renaming).
 
 Close in one line: suggest building Level 1 and wiring the instrumentation defined in the hypothesis before revealing anything.

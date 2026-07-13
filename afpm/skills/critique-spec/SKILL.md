@@ -21,4 +21,4 @@ Input: $ARGUMENTS
 
 4. **Synthesize** as the researcher: agreements, conflicts (design tensions), and the 2–3 highest-impact changes.
 
-5. **Save** to `product/insights/critique-{spec-slug}-{YYYY-MM-DD}.md` and offer the natural next step in one line (e.g., revise the spec, or slice it with `/slice-feature`).
+5. **Save** to `product/insights/{YYYY-MM-DD-HHMM}-critique-{spec-slug}.md` and offer the natural next step in one line (e.g., revise the spec, or slice it with `/slice-feature`).

@@ -19,4 +19,4 @@ Input: $ARGUMENTS
 
 3. **Build the plan** per the `exposure-plans` skill: locate or derive the hypothesis (confirm with the user if derived), decompose into sequenced falsifiable beliefs, 1–5 accumulative levels each with belief/audience/duration/validation, mechanism note, parallel validations, open questions. Same language as the spec.
 
-4. **Save** to `product/exposure-plans/{spec-slug}.md`.
+4. **Save** to `product/exposure-plans/{YYYY-MM-DD-HHMM}-{spec-slug}.md` (timestamp = creation date; revise in place without renaming).

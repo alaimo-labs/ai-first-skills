@@ -28,6 +28,7 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | `/generate-personas` | Generate a diverse set of synthetic personas for your product |
 | `/interview-persona` | Interview a persona — exploration or validation mode          |
 | `/extract-insights`  | Extract actionable insights from interview transcripts        |
+| `/write-spec`        | Draft an evidence-grounded spec: journey, stories, criteria   |
 | `/critique-spec`     | Persona panel critiques a spec/PRD, with synthesis            |
 | `/slice-feature`     | Turn a spec's hypothesis into an Exposure Plan                |
 
@@ -40,6 +41,7 @@ Model-invoked — the agent loads them automatically when the topic matches.
 | `synthetic-personas`   | Archetype principles, persona structure, diversity requirements   |
 | `synthetic-interviews` | In-character interview roleplay; exploration vs. validation modes |
 | `insight-extraction`   | Focus areas, grounding rules, insight quality bar                 |
+| `feature-specs`        | Spec structure: journey, stories, acceptance criteria, hypothesis |
 | `persona-critique`     | In-character document reviews and panel synthesis                 |
 | `exposure-plans`       | Build ≠ reveal, belief decomposition, level design, validations   |
 

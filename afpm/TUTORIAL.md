@@ -45,7 +45,7 @@ Synthetic personas are **archetype hypotheses, not real users** — their value 
 
 This is the heart of the method — and **you are the interviewer**. The persona answers in character; the questions are yours. Start in *exploration* mode (open discovery about the problem space). *Validation* mode exists for later, when you have something specific to test.
 
-Interview **at least two different personas** before moving on — insights that recur across interviews are the credible ones. When you end the interview, accept the offer to save the transcript to `product/interviews/{persona-slug}-{date}.md`.
+Interview **at least two different personas** before moving on — insights that recur across interviews are the credible ones. When you end the interview, accept the offer to save the transcript to `product/interviews/{date-time}-{persona-slug}.md` — date-first, so your interview log reads chronologically.
 
 ## Stage 3 — Insights: `/extract-insights`
 
@@ -57,35 +57,44 @@ Raw transcripts don't drive decisions; grounded insights do. This extracts 3–5
 
 One caveat the skill will also give you: **synthetic insights are hypotheses to verify with real users**, not evidence to ship on.
 
-## Stage 4 — Spec: your bet, in writing
+## Stage 4 — Spec: `/write-spec`
 
-No command for this one — this stage is yours. Pick the insight you'd bet on and write a short feature spec in `product/specs/{slug}.md`:
+```
+/write-spec
+```
+
+This is where discovery turns into a bet. The command reads your insights, proposes the one that looks highest-impact (or take it a specific idea), and drafts the spec with you into `product/specs/{date-time}-{slug}.md`:
 
 - **Problem** — citing the insight and its quotes
-- **Proposed feature** — what you'd build
 - **Who it's for** — which persona(s) it serves
+- **User journey** — the primary persona's path, trigger to outcome, grounded in what the interviews revealed
+- **Critical user stories (3–5)** — "As {persona}, I want…", each with 3–6 observable acceptance criteria
 - **Hypothesis** — explicit and falsifiable; the next stages depend on it:
 
 > We believe *{users}* will *{behavior}* because *{motivation}*.
 > We're wrong if *{observable signal}*.
 
+- **Assumptions** — the beliefs the spec rests on that no interview has verified yet
+
+The spec is *your* bet, not the agent's — sweat the journey and the hypothesis before saving.
+
 ## Stage 5 — Critique: `/critique-spec`
 
 ```
-/critique-spec product/specs/{slug}.md
+/critique-spec product/specs/{date-time}-{slug}.md
 ```
 
-Before building anything, let the personas attack the spec — cheaper than real users finding the same holes later. Each persona reviews it in character; a synthesis surfaces agreements, design tensions, and the 2–3 highest-impact changes. Saved to `product/insights/critique-{spec-slug}-{date}.md`.
+Before building anything, let the personas attack the spec — cheaper than real users finding the same holes later. Each persona reviews it in character; a synthesis surfaces agreements, design tensions, and the 2–3 highest-impact changes. Saved to `product/insights/{date-time}-critique-{spec-slug}.md`.
 
 Then **actually revise the spec**. The critique isn't a report to file — it's an edit list. Re-run the panel on the revision if you want a second pass.
 
 ## Stage 6 — Slice: `/slice-feature`
 
 ```
-/slice-feature product/specs/{slug}.md
+/slice-feature product/specs/{date-time}-{slug}.md
 ```
 
-Build ≠ reveal: instead of shipping the whole feature and hoping, expose it in accumulative levels where each level tests one falsifiable belief — so the hypothesis can fail cheaply and early. The result is an Exposure Plan in `product/exposure-plans/{spec-slug}.md`: 1–5 levels, each with a belief, an audience, a duration, and a validation signal.
+Build ≠ reveal: instead of shipping the whole feature and hoping, expose it in accumulative levels where each level tests one falsifiable belief — so the hypothesis can fail cheaply and early. The result is an Exposure Plan in `product/exposure-plans/{date-time}-{spec-slug}.md`: 1–5 levels, each with a belief, an audience, a duration, and a validation signal.
 
 ## Where you've landed
 

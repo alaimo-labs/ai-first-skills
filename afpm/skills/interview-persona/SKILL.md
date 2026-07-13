@@ -23,4 +23,4 @@ Input: $ARGUMENTS
 
 5. **Roleplay** per the `synthetic-interviews` skill and the mode-specific instructions (exploration-mode.md / validation-mode.md). Stay in character until the interviewer ends the interview. Interviewer coaching notes go outside the roleplay, clearly marked, and sparingly.
 
-6. **On wrap-up:** offer to save the transcript to `product/interviews/{persona-slug}-{YYYY-MM-DD}.md` (header: persona, mode, topic, date) and suggest `/extract-insights` on it.
+6. **On wrap-up:** offer to save the transcript to `product/interviews/{YYYY-MM-DD-HHMM}-{persona-slug}.md` (header: persona, mode, topic, date) and suggest `/extract-insights` on it.
