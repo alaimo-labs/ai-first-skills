@@ -13,10 +13,10 @@ Input: $ARGUMENTS
 
 ## Workflow
 
-1. **Resolve sources.** If files or a persona were named, use those transcripts from `product/interviews/`. With no arguments, use the most recent transcript — or, if the current conversation contains a just-finished interview, use that directly. The user may also paste a transcript of a real interview.
+1. **Resolve sources.** If files or a persona were named, use those transcripts from `product/interviews/`. With no arguments, use the most recent transcript — or, if the current conversation contains a just-finished interview, use that directly. Real-interview transcripts work too: pasted text or a file path anywhere on disk. When a real transcript lives outside `product/interviews/`, offer to archive a copy there as `{YYYY-MM-DD-HHMM}-{interviewee-slug}.md` with a `source: real` header, so the whole interview corpus stays in one place.
 
 2. **Extract** 3–5 insights per the `insight-extraction` skill: grounded in quotes, actionable, quantified when possible, prioritized by impact, in the transcript's language.
 
 3. **Cross-interview synthesis.** When multiple transcripts are involved, flag insights that recur across interviewees.
 
-4. **Save** to `product/insights/{YYYY-MM-DD-HHMM}-{slug}.md` with a header listing sources and `source: synthetic` when applicable (include the one-time reminder that synthetic insights are hypotheses to verify with real users).
+4. **Save** to `product/insights/{YYYY-MM-DD-HHMM}-{slug}.md` with a header listing sources and `source: synthetic` or `source: real` (mixed corpora list both per source). For synthetic sources, include the one-time reminder that synthetic insights are hypotheses to verify with real users.

@@ -13,7 +13,7 @@ Input: $ARGUMENTS
 
 ## Workflow
 
-1. **Load product context.** Read `product/overview.md` if it exists; otherwise look for a README or similar product description. If no product context exists, ask for the product name, a short description, and target users — then offer to save that as `product/overview.md`.
+1. **Load product context.** Read `product/overview.md` if it exists; otherwise look for a README or similar product description. If no product context exists, suggest `/start-product` first (it also captures the unverified beliefs later stages test); if the user prefers to continue here, ask for the product name, a short description, and target users — then offer to save that as `product/overview.md`.
 
 2. **Read existing personas** in `product/personas/` to avoid duplicates and to fill diversity gaps (the new set should complement, not repeat).
 

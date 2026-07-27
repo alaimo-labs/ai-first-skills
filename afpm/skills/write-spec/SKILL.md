@@ -15,7 +15,7 @@ Input: $ARGUMENTS
 
 1. **Resolve the bet.** If the arguments name a feature idea or an insight file, start there. Otherwise read the recent files in `product/insights/`, propose the insight that looks highest-impact as the one to bet on, and confirm with the user before proceeding.
 
-2. **Load the evidence.** Read `product/overview.md`, the personas in `product/personas/` relevant to the chosen insight, and the interview transcripts the insight cites. Identify the primary persona for the journey and confirm the choice if it isn't obvious.
+2. **Load the evidence.** Read `product/overview.md`, the personas in `product/personas/` relevant to the chosen insight, the interview transcripts the insight cites, and any market research in `product/research/` that bears on the bet. Identify the primary persona for the journey and confirm the choice if it isn't obvious.
 
 3. **Draft** per the `feature-specs` skill: problem with cited evidence, user journey from the primary persona's point of view, 3–5 critical user stories with observable acceptance criteria, the falsifiable hypothesis block, and assumptions. Where the evidence is thin, put the claim under Assumptions — never invent quotes or journey steps.
 

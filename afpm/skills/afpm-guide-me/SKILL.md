@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # /afpm-guide-me
 
-Walk the user through the full AFPM discovery loop — with their own product, one stage per invocation. The guide produces no artifacts of its own beyond stage 0: every step's output is a standard `product/` artifact created by the user running the real commands.
+Walk the user through the full AFPM discovery loop — with their own product, one stage per invocation. The guide produces no artifacts of its own: every step's output is a standard `product/` artifact created by the user running the real commands.
 
 Input: $ARGUMENTS
 
@@ -15,7 +15,7 @@ Input: $ARGUMENTS
 
 | # | Stage     | Command the user runs                    | Artifact                              |
 | - | --------- | ---------------------------------------- | ------------------------------------- |
-| 0 | Ground    | (this tutorial guides it)                | `product/overview.md`                 |
+| 0 | Ground    | `/start-product`                         | `product/overview.md`                 |
 | 1 | Personas  | `/generate-personas`                     | `product/personas/*.md`               |
 | 2 | Interview | `/interview-persona <name> exploration`  | `product/interviews/*.md`             |
 | 3 | Insights  | `/extract-insights`                      | `product/insights/*.md`               |
@@ -47,11 +47,7 @@ Artifacts default to `product/…`; if this repo already has a place for product
 
 ## Stage guidance
 
-- **Stage 0 — Ground.** The goal is `product/overview.md`: product name, what it is, who it's for, and — the question that pays off later — what the user currently believes about their users but hasn't verified. Two paths to it:
-  - **The repo already has product context** (README, specs, docs): read it, but treat it as hypothesis, not fact. Present what was inferred point by point, naming the source file for each ("from `docs/specs/README.md` I gather that…"), and ask the user to confirm or correct it before any of it goes into the overview. Documents can be stale, aspirational, or describe a direction that has already changed — only the user knows which. Then ask only for what the docs can't contain (the unverified beliefs above all).
-  - **No context anywhere:** interview the user briefly (a few questions, not a form).
-
-  Either way: draft the overview, show it, confirm, save. This is the context every other skill reads.
+- **Stage 0 — Ground.** The goal is `product/overview.md`: product name, what it is, who it's for, and — the question that pays off later — what the user currently believes about their users but hasn't verified. Explain that this file is the context every other skill reads, and that the unverified beliefs are the engine of the loop: the interviews exist to test them. Hand them `/start-product` — it reads whatever context the repo already has (presented as hypothesis for the user to confirm, never assumed), interviews them for the rest, and pushes the beliefs until they're falsifiable.
 
 - **Stage 1 — Personas.** Explain in two sentences: synthetic personas are archetype hypotheses, not real users — their value is forcing you to look at your product through eyes that aren't yours. Hand them `/generate-personas` (default 3 is fine; they can name a segment focus). Suggest they check the set for diversity before accepting.
 
@@ -59,7 +55,7 @@ Artifacts default to `product/…`; if this repo already has a place for product
 
 - **Stage 3 — Insights.** Explain: raw transcripts don't drive decisions, grounded insights do — each one tied to quotes, actionable, prioritized. Hand them `/extract-insights` (with no arguments it takes the latest transcript; naming several files or a persona pulls in more). Note the caveat the skill itself will raise: synthetic insights are hypotheses to verify with real users.
 
-- **Stage 4 — Spec.** Explain in two sentences: this is where discovery turns into a bet — the spec picks one insight and commits to a feature, a user journey, critical stories with acceptance criteria, and a falsifiable hypothesis, all still traceable to interview quotes. Hand them `/write-spec` (it proposes the highest-impact insight to bet on; they can also name one). Tell them the hypothesis is the part to sweat — `/slice-feature` will decompose it later.
+- **Stage 4 — Spec.** Explain in two sentences: this is where discovery turns into a bet — the spec picks one insight and commits to a feature, a user journey, critical stories with acceptance criteria, and a falsifiable hypothesis, all still traceable to interview quotes. Hand them `/write-spec` (it proposes the highest-impact insight to bet on; they can also name one). If their idea is still too fuzzy to spec, mention `/clarify-idea` as the optional step before it. Tell them the hypothesis is the part to sweat — `/slice-feature` will decompose it later.
 
 - **Stage 5 — Critique.** Explain: before building anything, let the personas attack the spec — cheaper than real users finding the same holes later. Hand them `/critique-spec <spec file>`. When the panel is done, have them actually revise the spec from the 2–3 highest-impact changes (offer to re-run the critique on the revision if they want a second pass).
 
@@ -68,6 +64,8 @@ Artifacts default to `product/…`; if this repo already has a place for product
 - **Wrap-up.** Recap the trail they built: overview → personas → interviews → insights → spec → critique → exposure plan — every decision traceable back to evidence. Then:
   - Offer (optional, their call) to add a short section to the repo's `CLAUDE.md` noting that product discovery artifacts live under `product/` with `product/overview.md` as the product context, so future sessions respect the layout.
   - Point out the loop is repeatable — next feature, same trail — and that individual commands work standalone from now on.
+  - Remind them everything so far is synthetic — hypotheses, not evidence — and name the bridge to real users in two lines: `/design-interview` and `/design-survey` turn their open assumptions into research instruments; `/extract-insights` and `/analyze-survey` process what comes back; `/derive-personas` rebuilds the persona set from the real patterns.
+  - Name the ceiling in one line: the loop keeps the evidence trail intact, but the hard parts stay theirs — deciding what *not* to build, sitting with research that says the product is wrong, holding a falsifiable bet up in front of real stakeholders. No command settles those.
   - Mention in one line that building the prototype and running the exposure plan is where the AI-First Product Builder plugin (`afpb`) picks up.
 
 ## Rules

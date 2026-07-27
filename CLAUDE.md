@@ -53,13 +53,19 @@ Skills read and write product artifacts in the user's working repo:
 product/
 ├── overview.md          <- product context (name, description, target users)
 ├── personas/{slug}.md   <- one file per persona
-├── interviews/          <- interview transcripts ({YYYY-MM-DD-HHMM}-{persona-slug}.md)
+├── interviews/          <- interview transcripts, synthetic and real ({YYYY-MM-DD-HHMM}-{persona-or-interviewee-slug}.md)
+├── interview-guides/    <- guides for real-user interviews ({YYYY-MM-DD-HHMM}-{slug}.md)
+├── surveys/             <- survey questionnaires ({YYYY-MM-DD-HHMM}-{slug}.md; results analyses go to insights/)
 ├── insights/            <- extracted insights ({YYYY-MM-DD-HHMM}-{slug}.md; critiques: {YYYY-MM-DD-HHMM}-critique-{spec-slug}.md)
+├── research/            <- secondary research / benchmarks ({YYYY-MM-DD-HHMM}-{slug}.md; source: secondary — market evidence, kept apart from user evidence in insights/)
+├── ideas/               <- clarified idea briefs ({YYYY-MM-DD-HHMM}-{slug}.md)
 ├── specs/               <- feature specs ({YYYY-MM-DD-HHMM}-{slug}.md)
 └── exposure-plans/      <- exposure plans ({YYYY-MM-DD-HHMM}-{spec-slug}.md)
 ```
 
 Every artifact except `overview.md` and personas carries a `{YYYY-MM-DD-HHMM}-` prefix so listings sort chronologically. The timestamp is the creation date: revisions (e.g. a spec after a critique panel) edit the file in place without renaming.
+
+Artifacts that can come from synthetic or real sources declare it in their header: interview transcripts and insights carry `source: synthetic | real | survey`; personas carry `source: derived` when built bottom-up from real evidence (`/derive-personas`) — synthetic and derived personas share `product/personas/`.
 
 Workflow skills create these directories on first use. If the repo has an existing layout, skills adapt to it rather than forcing this one.
 
