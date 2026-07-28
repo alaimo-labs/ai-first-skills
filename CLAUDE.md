@@ -58,6 +58,7 @@ product/
 ├── surveys/             <- survey questionnaires ({YYYY-MM-DD-HHMM}-{slug}.md; results analyses go to insights/)
 ├── insights/            <- extracted insights ({YYYY-MM-DD-HHMM}-{slug}.md; critiques: {YYYY-MM-DD-HHMM}-critique-{spec-slug}.md)
 ├── research/            <- secondary research / benchmarks ({YYYY-MM-DD-HHMM}-{slug}.md; source: secondary — market evidence, kept apart from user evidence in insights/)
+├── journeys/            <- user journeys + cognitive friction maps ({YYYY-MM-DD-HHMM}-{slug}.md)
 ├── ideas/               <- clarified idea briefs ({YYYY-MM-DD-HHMM}-{slug}.md)
 ├── specs/               <- feature specs ({YYYY-MM-DD-HHMM}-{slug}.md)
 └── exposure-plans/      <- exposure plans ({YYYY-MM-DD-HHMM}-{spec-slug}.md)

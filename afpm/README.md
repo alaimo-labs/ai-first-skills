@@ -45,6 +45,7 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | `/design-survey`     | Design a survey questionnaire, ready for any survey tool      |
 | `/analyze-survey`    | Analyze survey results: quant summary, themes, insights       |
 | `/derive-personas`   | Derive evidence-based personas from real research patterns    |
+| `/map-frictions`     | Map cognitive frictions across a journey's steps (MFC)        |
 | `/clarify-idea`      | Sharpen a fuzzy idea via one-question-at-a-time brainstorming |
 | `/write-spec`        | Draft an evidence-grounded spec: journey, stories, criteria   |
 | `/critique-spec`     | Persona panel critiques a spec/PRD, with synthesis            |
@@ -62,6 +63,7 @@ Model-invoked — the agent loads them automatically when the topic matches.
 | `insight-extraction`   | Focus areas, grounding rules, insight quality bar                 |
 | `interview-guides`     | Discussion-guide design: goals → questions, funnel, non-leading; pretesting |
 | `survey-design`        | Questionnaire craft, wording bias, scales, results analysis       |
+| `cognitive-frictions`  | The MFC lens: four friction categories, severity, opportunity bar |
 | `feature-specs`        | Spec structure: journey, stories, acceptance criteria, hypothesis |
 | `persona-critique`     | In-character document reviews and panel synthesis                 |
 | `exposure-plans`       | Build ≠ reveal, belief decomposition, level design, validations   |
@@ -79,6 +81,7 @@ product/
 ├── surveys/             # survey questionnaires
 ├── insights/            # extracted insights, survey analyses & critique panels
 ├── research/            # secondary research & benchmarks
+├── journeys/            # user journeys + cognitive friction maps
 ├── ideas/               # clarified idea briefs
 ├── specs/               # feature specs
 └── exposure-plans/      # exposure plans
