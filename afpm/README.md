@@ -16,16 +16,6 @@ From the `ai-first-skills` marketplace in Claude Code:
 /plugin install afpm
 ```
 
-## The loop
-
-```
-overview → personas → interviews → insights → spec → critique → exposure plan
-```
-
-Each stage reads the previous stage's artifact — nothing gets invented at the moment of deciding: the exposure plan traces to the spec, the spec to an insight, the insight to a quote from an interview. Every command also works standalone; the loop is just the order that keeps the trail intact.
-
-What the loop produces from synthetic personas is hypothesis, not evidence. `/design-interview`, `/design-survey`, `/analyze-survey` and `/derive-personas` are the bridge to real users.
-
 ## Workflows
 
 User-invoked skills — you trigger them as slash commands; they never auto-load.
