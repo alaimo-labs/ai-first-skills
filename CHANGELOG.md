@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.1 — 2026-08-04
+
+- afpm: `/clarify-idea` now shows the full idea brief in the conversation before asking to save it — it used to ask for confirmation over a brief the user hadn't seen
+
 ## v0.4.0 — 2026-08-04
 
 - afpm: removed `/afpm-guide-me` due to circular references and restrictive linear promotion

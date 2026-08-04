@@ -26,9 +26,9 @@ Input: $ARGUMENTS
    - **"I don't know" is a finding, not a failure.** Record it as an open assumption and continue.
    - **Stop at shared understanding, not exhaustion.** When new questions stop changing the idea (typically 5–10 decisions), summarize and confirm with the user before writing anything.
 
-4. **Synthesize** into an idea brief: the clarified idea (problem, persona, value, smallest shape), the decisions made along the way, and the open assumptions ranked by how badly they could kill the idea.
+4. **Synthesize** into an idea brief: the clarified idea (problem, persona, value, smallest shape), the decisions made along the way, and the open assumptions ranked by how badly they could kill the idea. **Show the full brief in the conversation** — never ask the user to confirm or save content they haven't seen yet.
 
-5. **Save** to `product/ideas/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date). Discarded ideas are worth saving too — note *why* they died; that's product memory.
+5. **Save** to `product/ideas/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date) once the user has seen the brief and agreed. Discarded ideas are worth saving too — note *why* they died; that's product memory.
 
 6. **Close with the natural next step in one line:** if the idea holds, draft the spec (`/write-spec`); if a risky assumption dominates, test it first (`/interview-persona` in validation mode).
 
