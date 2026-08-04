@@ -16,8 +16,6 @@ From the `ai-first-skills` marketplace in Claude Code:
 /plugin install afpm
 ```
 
-New here? Run `/afpm-guide-me` — it walks you through the loop below with your own product, one stage at a time, and picks up wherever you left off.
-
 ## The loop
 
 ```
@@ -34,7 +32,6 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 
 | Workflow             | What it does                                                  |
 | -------------------- | ------------------------------------------------------------- |
-| `/afpm-guide-me`     | Guided tour of the discovery loop, resumable at any stage     |
 | `/start-product`     | Bootstrap `product/overview.md`: context + unverified beliefs |
 | `/research-market`   | Secondary research/benchmarking, every claim provenance-tagged |
 | `/generate-personas` | Generate a diverse set of synthetic personas for your product |

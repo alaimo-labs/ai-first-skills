@@ -40,7 +40,7 @@ Input: $ARGUMENTS
    - …
    ```
 
-5. **Close with the next step in one line:** generate the persona set (`/generate-personas`) — or, if they'd rather be guided through the whole loop, `/afpm-guide-me`. If the beliefs raise market questions (does this already exist? what does it cost?), mention `/research-market` as an optional detour before the personas.
+5. **Close with the next step in one line:** generate the persona set (`/generate-personas`). If the beliefs raise market questions (does this already exist? what does it cost?), mention `/research-market` as an optional detour before the personas.
 
 ## Language
 
