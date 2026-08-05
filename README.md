@@ -12,7 +12,7 @@ Everything is standalone: plain markdown artifacts in your own repo, no external
 Add the marketplace in Claude Code, then install your course's plugin:
 
 ```
-/plugin marketplace add <this-repo-url>
+/plugin marketplace add https://github.com/alaimo-labs/ai-first-skills
 /plugin install afpm   # or afpb
 ```
 
