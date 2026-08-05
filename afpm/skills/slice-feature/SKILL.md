@@ -19,4 +19,6 @@ Input: $ARGUMENTS
 
 3. **Build the plan** per the `exposure-plans` skill: locate or derive the hypothesis (confirm with the user if derived), decompose into sequenced falsifiable beliefs, 1–5 accumulative levels each with belief/audience/duration/validation, mechanism note, parallel validations, open questions. Same language as the spec.
 
-4. **Save** to `product/exposure-plans/{YYYY-MM-DD-HHMM}-{spec-slug}.md` (timestamp = creation date; revise in place without renaming).
+4. **Present and confirm.** Show the full plan in the conversation — never ask to save (or save) a plan the user hasn't seen. Walk them through the belief sequence and the levels; adjust until they own it.
+
+5. **Save** to `product/exposure-plans/{YYYY-MM-DD-HHMM}-{spec-slug}.md` (timestamp = creation date; revise in place without renaming) once the user agrees.

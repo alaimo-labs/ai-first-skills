@@ -32,3 +32,7 @@ python3 ci-validate.py
 ```
 
 Runs in CI on every push and PR.
+
+## License
+
+[CC BY-SA 4.0](./LICENSE) © [Alaimo Labs](https://alaimolabs.com). Use, adapt, and share freely — credit Alaimo Labs and keep derivatives under the same license.

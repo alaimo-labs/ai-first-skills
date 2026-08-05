@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.2 — 2026-08-05
+
+- Licensed the repo under CC BY-SA 4.0: `LICENSE` file, License sections in the three READMEs, and `license: CC-BY-SA-4.0` in the marketplace and plugin manifests
+- afpm + afpb: `/slice-feature` and `/plan-exposure` now present the full exposure plan and get the user's agreement before saving — they used to save without showing it
+
 ## v0.4.1 — 2026-08-04
 
 - afpm: `/clarify-idea` now shows the full idea brief in the conversation before asking to save it — it used to ask for confirmation over a brief the user hadn't seen

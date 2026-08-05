@@ -44,3 +44,7 @@ product/
 ├── specs/               # feature specs
 └── exposure-plans/      # exposure plans
 ```
+
+## License
+
+[CC BY-SA 4.0](../LICENSE) © [Alaimo Labs](https://alaimolabs.com). Use, adapt, and share freely — credit Alaimo Labs and keep derivatives under the same license.
