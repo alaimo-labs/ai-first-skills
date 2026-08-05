@@ -11,7 +11,7 @@ Guidance for AI agents working in this repository. Single source of truth for st
 | `afpm` | [AI-First Product Manager](https://alaimolabs.com/es/courses/ai-first-product-manager) | Discovery and validation with synthetic users: personas, interviews, insights, critique panels, exposure plans |
 | `afpb` | [AI-First Product Builder](https://alaimolabs.com/es/courses/ai-first-product-builder) | Hypothesis → prototype → exposure → evidence loop with coding agents                                           |
 
-Owner: Martin Alaimo — malaimo@gmail.com — https://alaimolabs.com
+Owner: Alaimo Labs — info@alaimolabs.com — https://alaimolabs.com
 
 ## Repo Structure
 
