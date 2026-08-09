@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.0 — 2026-08-08
+
+- Portable [Agent Plugins](https://agent-plugins.org) 1.0.0 support: each plugin now ships a root `plugin.json` conforming to the portable manifest schema, alongside the Claude Code manifest in `.claude-plugin/`. Compatible clients (Cursor, VS Code, GitHub Copilot, ChatGPT & Codex, Kiro) can load the plugins directly; the Claude Code marketplace flow is unchanged.
+- READMEs: per-client install instructions for the portable format in the repo README, referenced from both plugin READMEs.
+- `ci-validate.py`: validates the portable manifests against the closed 1.0.0 schema, enforces that shared fields stay in sync between the two manifests of each plugin, and flags duplicate JSON keys in all manifests.
+- Fixed a duplicate `license` key in both `.claude-plugin/plugin.json` files that made the plugins report MIT instead of CC-BY-SA-4.0.
+
 ## v0.4.2 — 2026-08-05
 
 - Licensed the repo under CC BY-SA 4.0: `LICENSE` file, License sections in the three READMEs, and `license: CC-BY-SA-4.0` in the marketplace and plugin manifests

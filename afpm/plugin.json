@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "afpm",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "AI-First Product Manager skills: synthetic personas, persona interviews (exploration and validation), insight extraction, persona critique panels, and exposure plans.",
   "author": {
     "name": "Alaimo Labs",
