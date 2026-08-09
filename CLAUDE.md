@@ -19,7 +19,8 @@ Owner: Alaimo Labs — info@alaimolabs.com — https://alaimolabs.com
 ai-first-skills/
 ├── .claude-plugin/marketplace.json   <- root manifest listing both plugins
 ├── afpm/                             <- AI-First Product Manager plugin
-│   ├── .claude-plugin/plugin.json
+│   ├── .claude-plugin/plugin.json    <- Claude Code manifest
+│   ├── plugin.json                   <- portable Agent Plugins manifest (agent-plugins.org)
 │   ├── skills/{skill}/SKILL.md       <- one folder per skill (+ optional reference .md files)
 │   │                                    knowledge skills are model-invoked; workflow skills
 │   │                                    carry disable-model-invocation: true (user-invoked)
@@ -44,6 +45,7 @@ ai-first-skills/
 - **Standalone, product-agnostic.** Skills must work in any repo with only markdown files — no external tools or APIs. Artifacts live in the user's repo under `product/` (see File Conventions).
 - **Audience-agnostic.** Skill content addresses anyone doing product work; the courses appear only in READMEs, as provenance. In interview-related skills, call the human "the interviewer" — "the user" collides with the product's users being researched.
 - **Frontmatter:** every skill needs `name` (must match directory name) + `description`; workflow skills additionally need `disable-model-invocation: true` + `argument-hint`. Keep frontmatter lean (always loaded); detail goes in the body (loaded when triggered).
+- **Dual manifests.** Each plugin carries two manifests: `.claude-plugin/plugin.json` (Claude Code) and a root `plugin.json` (portable [Agent Plugins](https://agent-plugins.org) 1.0.0 format, for clients like Cursor, VS Code, Copilot, Codex, Kiro). Shared fields (`name`, `version`, `description`, `author`, `homepage`, `license`, `keywords`) must stay identical in both — `ci-validate.py` enforces this. The portable manifest uses a closed schema: Claude-Code-only fields (`displayName`) stay out of it; the marketplace remains Claude Code's distribution channel and is not part of the portable format.
 
 ## File Conventions (user repos)
 
@@ -93,6 +95,6 @@ Never cut a release just to test a change. Two speeds:
 ## Versioning & Releases
 
 - `CHANGELOG.md` is the source of truth. Newest `## vX.Y.Z — YYYY-MM-DD` heading = released version.
-- `marketplace.json` and both `plugin.json` files carry the same version. No per-plugin versioning.
+- `marketplace.json` and all four plugin manifests (two per plugin: `.claude-plugin/plugin.json` + root `plugin.json`) carry the same version. No per-plugin versioning.
 - Semver: breaking = major; new skills = minor; fixes/docs = patch.
 - Run `python3 ci-validate.py` before committing structural changes.

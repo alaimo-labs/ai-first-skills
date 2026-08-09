@@ -3,7 +3,10 @@
 
 Checks:
 - marketplace.json: required fields, every listed plugin dir exists
-- each plugin.json: required fields, version matches marketplace version
+- each .claude-plugin/plugin.json: required fields, version matches marketplace version
+- each root plugin.json (portable Agent Plugins manifest, agent-plugins.org):
+  conforms to the 1.0.0 closed schema and stays in sync with .claude-plugin/plugin.json
+- all JSON manifests: no duplicate keys
 - skills: SKILL.md exists, frontmatter has name + description, name matches directory
 - knowledge skills (model-invoked): description has "Use when…" trigger phrases, no $ARGUMENTS
 - workflow skills (disable-model-invocation: true): frontmatter has argument-hint, body contains $ARGUMENTS
@@ -22,6 +25,28 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 errors: list[str] = []
 warnings: list[str] = []
+
+# Closed schema of https://agent-plugins.org/schemas/1.0.0/plugin.schema.json
+PORTABLE_SCHEMA_URL = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
+PORTABLE_ALLOWED_KEYS = {
+    "$schema", "name", "version", "description", "author",
+    "homepage", "repository", "license", "keywords", "extensions",
+}
+PORTABLE_AUTHOR_KEYS = {"name", "email", "url"}
+PORTABLE_NAME_RE = re.compile(r"^(?!.*(?:--|\.\.))[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$")
+
+
+def load_json(path: Path) -> dict:
+    """json.loads that flags duplicate keys instead of silently keeping the last one."""
+    def hook(pairs):
+        obj = {}
+        for key, value in pairs:
+            if key in obj:
+                errors.append(f"{path.relative_to(ROOT)}: duplicate key '{key}'")
+            obj[key] = value
+        return obj
+
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=hook)
 
 
 def frontmatter(path: Path) -> dict:
@@ -42,7 +67,7 @@ def check_marketplace() -> dict:
     if not path.exists():
         errors.append("missing .claude-plugin/marketplace.json")
         return {}
-    data = json.loads(path.read_text(encoding="utf-8"))
+    data = load_json(path)
     for field in ("name", "version", "description", "owner", "plugins"):
         if field not in data:
             errors.append(f"marketplace.json: missing field '{field}'")
@@ -54,7 +79,7 @@ def check_plugin(plugin_dir: Path, marketplace_version: str) -> None:
     if not manifest.exists():
         errors.append(f"{plugin_dir.name}: missing .claude-plugin/plugin.json")
         return
-    data = json.loads(manifest.read_text(encoding="utf-8"))
+    data = load_json(manifest)
     for field in ("name", "version", "description"):
         if field not in data:
             errors.append(f"{plugin_dir.name}/plugin.json: missing field '{field}'")
@@ -66,6 +91,8 @@ def check_plugin(plugin_dir: Path, marketplace_version: str) -> None:
         )
     if not (plugin_dir / "README.md").exists():
         errors.append(f"{plugin_dir.name}: missing README.md")
+
+    check_portable_manifest(plugin_dir, data)
 
     skills_dir = plugin_dir / "skills"
     if skills_dir.is_dir():
@@ -108,6 +135,40 @@ def check_plugin(plugin_dir: Path, marketplace_version: str) -> None:
             f"{plugin_dir.name}: legacy commands/ directory found — commands were migrated to "
             "workflow skills (skills/{name}/SKILL.md with 'disable-model-invocation: true')"
         )
+
+
+def check_portable_manifest(plugin_dir: Path, claude_data: dict) -> None:
+    """Validate the root plugin.json (portable Agent Plugins 1.0.0 manifest)
+    and keep it in sync with .claude-plugin/plugin.json."""
+    path = plugin_dir / "plugin.json"
+    rel = f"{plugin_dir.name}/plugin.json (portable)"
+    if not path.exists():
+        errors.append(f"{plugin_dir.name}: missing root plugin.json (portable Agent Plugins manifest)")
+        return
+    data = load_json(path)
+
+    if data.get("$schema") != PORTABLE_SCHEMA_URL:
+        errors.append(f"{rel}: $schema must be '{PORTABLE_SCHEMA_URL}'")
+    for key in data:
+        if key not in PORTABLE_ALLOWED_KEYS:
+            errors.append(f"{rel}: field '{key}' not allowed by the closed schema")
+    name = data.get("name", "")
+    if not name:
+        errors.append(f"{rel}: missing field 'name'")
+    elif not (1 <= len(name) <= 64 and PORTABLE_NAME_RE.match(name)):
+        errors.append(f"{rel}: name '{name}' violates the schema name pattern")
+    author = data.get("author")
+    if isinstance(author, dict):
+        for key in author:
+            if key not in PORTABLE_AUTHOR_KEYS:
+                errors.append(f"{rel}: author field '{key}' not allowed by the closed schema")
+
+    # sync rule: shared fields must match the Claude Code manifest
+    for field in ("name", "version", "description", "author", "homepage", "license", "keywords"):
+        if data.get(field) != claude_data.get(field):
+            errors.append(
+                f"{rel}: field '{field}' differs from .claude-plugin/plugin.json"
+            )
 
 
 def check_exposure_plans_sync() -> None:

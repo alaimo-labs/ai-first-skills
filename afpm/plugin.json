@@ -1,14 +1,16 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "afpm",
-  "displayName": "AI-First Product Manager",
   "version": "0.4.2",
-  "license": "CC-BY-SA-4.0",
   "description": "AI-First Product Manager skills: synthetic personas, persona interviews (exploration and validation), insight extraction, persona critique panels, and exposure plans.",
   "author": {
     "name": "Alaimo Labs",
     "email": "info@alaimolabs.com",
     "url": "https://alaimolabs.com"
   },
+  "homepage": "https://alaimolabs.com/es/courses/ai-first-product-manager",
+  "repository": "https://github.com/alaimo-labs/ai-first-skills",
+  "license": "CC-BY-SA-4.0",
   "keywords": [
     "product-management",
     "product-discovery",
@@ -18,6 +20,5 @@
     "insights",
     "exposure-plan",
     "validation"
-  ],
-  "homepage": "https://alaimolabs.com/es/courses/ai-first-product-manager"
+  ]
 }

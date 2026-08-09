@@ -9,12 +9,52 @@ Everything is standalone: plain markdown artifacts in your own repo, no external
 
 ## Install
 
-Add the marketplace in Claude Code, then install your course's plugin:
+### Claude Code
+
+Add the marketplace, then install your course's plugin:
 
 ```
 /plugin marketplace add https://github.com/alaimo-labs/ai-first-skills
 /plugin install afpm   # or afpb
 ```
+
+### Other clients (portable Agent Plugins format)
+
+Each plugin also ships a root `plugin.json` in the portable [Agent Plugins](https://agent-plugins.org) 1.0.0 format, so any [compatible client](https://agent-plugins.org/compatible-clients) can load it. Where a client asks for a plugin directory, clone the repo first and point it at `afpm/` or `afpb/`:
+
+```bash
+git clone https://github.com/alaimo-labs/ai-first-skills.git
+```
+
+The steps below are taken from each client's official docs (linked); check them for the current flow.
+
+**Cursor** — [docs](https://cursor.com/docs/plugins). Load locally by placing (or symlinking) the plugin under `~/.cursor/plugins/local/`, then restart Cursor or run **Developer: Reload Window**:
+
+```bash
+ln -s /path/to/ai-first-skills/afpm ~/.cursor/plugins/local/afpm
+```
+
+Teams can instead import the repo from **Dashboard → Plugins → Add Marketplace → Import from Repo**; installed plugins then appear under **Customize** in the sidebar.
+
+**VS Code** — [docs](https://code.visualstudio.com/docs/agent-customization/agent-plugins). Add the repo as a marketplace in `settings.json`, then install from the Extensions view (search `@agentPlugins`) or via **Chat: Open Customizations → Plugins**:
+
+```json
+"chat.plugins.marketplaces": ["alaimo-labs/ai-first-skills"]
+```
+
+To load a local checkout instead:
+
+```json
+"chat.pluginLocations": { "/path/to/ai-first-skills/afpm": true }
+```
+
+**GitHub Copilot CLI** — [docs](https://docs.github.com/en/copilot/concepts/agents/about-plugins). Run `copilot plugin install` (or the `/plugin install` slash command) and point it at a marketplace, repository, or local path — e.g. the cloned `afpm/` directory. For declarative setup, add the plugin to `enabledPlugins` in `~/.copilot/settings.json` (user) or `.github/copilot/settings.json` (repo).
+
+**Kiro** — [docs](https://kiro.dev/docs/powers/installation/). Powers panel → **Add Custom Power** → **Import power from a folder** → select the cloned `afpm/` or `afpb/` directory → **Install**. (Kiro's "Import from GitHub" expects `plugin.json` at the repo root; this repo hosts two plugins, so use the folder import.)
+
+**ChatGPT & Codex** — [docs](https://developers.openai.com/plugins). In Codex CLI, add the repo as a marketplace source (`codex plugin marketplace add <source>`), or set up a personal marketplace: list the plugins in `~/.agents/plugins/marketplace.json` with `source.path` pointing at the cloned `afpm/`/`afpb/` directories. In the ChatGPT desktop app, marketplaces appear as sources in the Plugins Directory.
+
+> **Note:** outside Claude Code, workflow-skill behavior may differ — some clients ignore `disable-model-invocation` (workflow skills may auto-load) or expose skill invocation differently than slash commands.
 
 ## How it's organized
 

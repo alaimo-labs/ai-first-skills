@@ -1,14 +1,16 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "afpb",
-  "displayName": "AI-First Product Builder",
   "version": "0.4.2",
-  "license": "CC-BY-SA-4.0",
   "description": "AI-First Product Builder skills: falsifiable hypotheses, exposure plans, and the hypothesis-to-evidence experiment loop for prototypes built with coding agents.",
   "author": {
     "name": "Alaimo Labs",
     "email": "info@alaimolabs.com",
     "url": "https://alaimolabs.com"
   },
+  "homepage": "https://alaimolabs.com/es/courses/ai-first-product-builder",
+  "repository": "https://github.com/alaimo-labs/ai-first-skills",
+  "license": "CC-BY-SA-4.0",
   "keywords": [
     "product-building",
     "prototyping",
@@ -17,6 +19,5 @@
     "exposure-plan",
     "evidence",
     "validation"
-  ],
-  "homepage": "https://alaimolabs.com/es/courses/ai-first-product-builder"
+  ]
 }
