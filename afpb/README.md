@@ -16,7 +16,7 @@ From the `ai-first-skills` marketplace in Claude Code:
 /plugin install afpb
 ```
 
-The plugin also ships a portable [Agent Plugins](https://agent-plugins.org) manifest, so compatible clients (Cursor, VS Code, GitHub Copilot, ChatGPT & Codex, Kiro) can load it too — see the [repo README](../README.md#other-clients-portable-agent-plugins-format) for per-client instructions.
+The plugin also ships a portable [Agent Plugins](https://agent-plugins.org) manifest, so compatible clients (Cursor, VS Code, GitHub Copilot, ChatGPT & Codex, Kiro, OpenClaw, Hermes) can load it too — see the [repo README](../README.md#other-clients-portable-agent-plugins-format) for per-client instructions.
 
 ## Workflows
 

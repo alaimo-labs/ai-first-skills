@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.1 — 2026-08-09
+
+- Repo README: renamed the title to "AI-First Product Skills"
+- Install instructions for the two clients newly listed as Agent Plugins-compatible: OpenClaw (`openclaw plugins install` + gateway restart) and Hermes (`hermes plugins install` + explicit enable); both plugin READMEs mention them
+- Cursor install instructions now say to copy the plugin into `~/.cursor/plugins/local/` instead of symlinking — verified on Cursor 3.8.11 that symlinks pointing outside that directory are rejected (`loadUserLocalPlugin rejected`), while a copied directory hot-loads without a restart
+
 ## v0.5.0 — 2026-08-08
 
 - Portable [Agent Plugins](https://agent-plugins.org) 1.0.0 support: each plugin now ships a root `plugin.json` conforming to the portable manifest schema, alongside the Claude Code manifest in `.claude-plugin/`. Compatible clients (Cursor, VS Code, GitHub Copilot, ChatGPT & Codex, Kiro) can load the plugins directly; the Claude Code marketplace flow is unchanged.
