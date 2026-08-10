@@ -28,6 +28,8 @@ git clone https://github.com/alaimo-labs/ai-first-skills.git
 
 The steps below are taken from each client's official docs (linked); check them for the current flow.
 
+#### Cursor 
+
 **Cursor** — [docs](https://cursor.com/docs/plugins). Copy the plugin under `~/.cursor/plugins/local/` — Cursor watches the directory and loads it without a restart:
 
 ```bash
@@ -35,6 +37,8 @@ cp -R /path/to/ai-first-skills/afpm ~/.cursor/plugins/local/afpm
 ```
 
 (Cursor's docs also suggest symlinking for development, but as of Cursor 3.8 symlinks pointing outside `plugins/local` are rejected — use a real copy.) Teams can instead import the repo from **Dashboard → Plugins → Add Marketplace → Import from Repo**; installed plugins then appear under **Customize** in the sidebar.
+
+#### VS Code
 
 **VS Code** — [docs](https://code.visualstudio.com/docs/agent-customization/agent-plugins). Add the repo as a marketplace in `settings.json`, then install from the Extensions view (search `@agentPlugins`) or via **Chat: Open Customizations → Plugins**:
 
@@ -48,9 +52,15 @@ To load a local checkout instead:
 "chat.pluginLocations": { "/path/to/ai-first-skills/afpm": true }
 ```
 
+#### GitHub Copilot
+
 **GitHub Copilot CLI** — [docs](https://docs.github.com/en/copilot/concepts/agents/about-plugins). Run `copilot plugin install` (or the `/plugin install` slash command) and point it at a marketplace, repository, or local path — e.g. the cloned `afpm/` directory. For declarative setup, add the plugin to `enabledPlugins` in `~/.copilot/settings.json` (user) or `.github/copilot/settings.json` (repo).
 
+#### Kiro
+
 **Kiro** — [docs](https://kiro.dev/docs/powers/installation/). Powers panel → **Add Custom Power** → **Import power from a folder** → select the cloned `afpm/` or `afpb/` directory → **Install**. (Kiro's "Import from GitHub" expects `plugin.json` at the repo root; this repo hosts two plugins, so use the folder import.)
+
+#### OpenClaw
 
 **OpenClaw** — [docs](https://docs.openclaw.ai/plugins/bundles). Install the cloned plugin directory as a bundle, then restart the gateway:
 
@@ -61,6 +71,8 @@ openclaw gateway restart
 
 Verify with `openclaw plugins list` — the plugin should show `Bundle format: agent (Agent Plugins)`.
 
+#### Hermes Agent
+
 **Hermes** — [docs](https://hermes-agent.nousresearch.com/docs/developer-guide/plugins#portable-agent-plugins-v1-packages). Install and enable via the CLI (portable packages install disabled by default):
 
 ```bash
@@ -70,6 +82,8 @@ hermes plugins enable afpm   # or afpb
 ```
 
 Plugin skills load namespaced (`agent-plugin-<slug>-<hash>`) to avoid collisions with built-in skills.
+
+#### ChatGPT & Codex
 
 **ChatGPT & Codex** — [docs](https://developers.openai.com/plugins). In Codex CLI, add the repo as a marketplace source (`codex plugin marketplace add <source>`), or set up a personal marketplace: list the plugins in `~/.agents/plugins/marketplace.json` with `source.path` pointing at the cloned `afpm/`/`afpb/` directories. In the ChatGPT desktop app, marketplaces appear as sources in the Plugins Directory.
 
