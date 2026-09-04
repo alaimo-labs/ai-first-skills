@@ -51,3 +51,7 @@ Save to `product/insights/{YYYY-MM-DD-HHMM}-{topic-or-persona-slug}.md` (date-fi
 ## Caveat for synthetic sources
 
 When the source interviews are synthetic, remind the user (once, briefly) that synthetic insights are hypotheses to check against real users, not evidence. Mark the insights file `source: synthetic` in its header.
+
+## Feeding back into beliefs
+
+Insights are also evidence about the unverified beliefs in `product/overview.md`. After saving, check whether any insight confirms or contradicts a belief there; if so, say it in one line and offer to annotate the belief on its own line: `— confirmed/contradicted/weakened by [file] (date)`. The status keywords are fixed English tokens (like `source:` values); a belief with no status is still unverified. Only real evidence confirms — synthetic insights make a belief promising at most, or `weakened` when they contradict it, never `confirmed`. Always with the user's approval, never silently.

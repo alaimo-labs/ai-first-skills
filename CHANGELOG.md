@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.6.0 — 2026-09-01
+
+- afpm: the memory loop closes — new `/review-evidence` workflow skill, the PM's weekly sweep (named `review-evidence` because bare `/review` collides with Claude Code's built-in review command, which wins the resolution). It lists the `product/` artifacts created or modified since the last review (`git log`, or filename timestamps without git), contrasts the new evidence against each unverified belief in `product/overview.md` respecting the provenance hierarchy (`source: real` > `survey` > `secondary` > `synthetic` — synthetic evidence never confirms a belief, it only makes it promising), and proposes per-belief annotations `— confirmed/contradicted/weakened by [file] (date)` (fixed English keywords; no status = still unverified; user approves before writing; beliefs are annotated, never deleted). It also reports drift (beliefs without evidence, synthetic insights without real verification, specs without critique, hypothesis files with an empty Outcome section when `product/hypotheses/` exists), asks what the human corrected of what the AI proposed this week, and appends it to the new `product/corrections.md` (single living file, dated entries: artifact, AI proposal, human decision, why — reviews are recorded even when there were no corrections). Closes with a one-screen summary and a suggested next step.
+- afpm: `/extract-insights` and `/analyze-survey` feed the loop too — after saving, both contrast their findings against the overview's beliefs and offer to annotate the affected ones with the same convention, always with the user's approval. Real and survey evidence can confirm or contradict (surveys within their sample limits); synthetic insights only signal. The `insight-extraction` knowledge skill documents the feedback step.
+- Belief-status convention and `product/corrections.md` documented in the File Conventions of `CLAUDE.md` and in the afpm README (which also lists `/review-evidence`).
+
 ## v0.5.1 — 2026-08-09
 
 - Repo README: renamed the title to "AI-First Product Skills"

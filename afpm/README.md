@@ -39,6 +39,7 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | `/write-spec`        | Draft an evidence-grounded spec: journey, stories, criteria   |
 | `/critique-spec`     | Persona panel critiques a spec/PRD, with synthesis            |
 | `/slice-feature`     | Turn a spec's hypothesis into an Exposure Plan                |
+| `/review-evidence`   | Weekly sweep: new evidence vs. beliefs, drift report, corrections log |
 
 ## Knowledge skills
 
@@ -63,7 +64,8 @@ Artifacts live in your repo:
 
 ```
 product/
-├── overview.md          # product context
+├── overview.md          # product context + unverified beliefs
+├── corrections.md       # log of human corrections to AI proposals (kept by /review-evidence)
 ├── personas/            # one file per persona (synthetic or derived)
 ├── interviews/          # transcripts, synthetic and real
 ├── interview-guides/    # guides for real-user interviews
@@ -75,6 +77,8 @@ product/
 ├── specs/               # feature specs
 └── exposure-plans/      # exposure plans
 ```
+
+As evidence arrives, beliefs in `overview.md` get a status appended on the belief's own line — `— confirmed/contradicted/weakened by [file] (date)` (keywords stay in English, like `source:` values; no status = still unverified). Only evidence from real users confirms; synthetic evidence just makes a belief promising. `/review-evidence`, `/extract-insights`, and `/analyze-survey` propose these annotations — you approve before anything is written.
 
 ## License
 

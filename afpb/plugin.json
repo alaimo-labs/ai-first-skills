@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "afpb",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "AI-First Product Builder skills: falsifiable hypotheses, exposure plans, and the hypothesis-to-evidence experiment loop for prototypes built with coding agents.",
   "author": {
     "name": "Alaimo Labs",

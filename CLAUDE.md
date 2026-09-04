@@ -53,7 +53,8 @@ Skills read and write product artifacts in the user's working repo:
 
 ```
 product/
-├── overview.md          <- product context (name, description, target users)
+├── overview.md          <- product context (name, description, target users, unverified beliefs)
+├── corrections.md       <- log of human corrections to AI proposals (living file; /review-evidence appends dated entries: artifact, what the AI proposed, what the human decided, why)
 ├── personas/{slug}.md   <- one file per persona
 ├── interviews/          <- interview transcripts, synthetic and real ({YYYY-MM-DD-HHMM}-{persona-or-interviewee-slug}.md)
 ├── interview-guides/    <- guides for real-user interviews ({YYYY-MM-DD-HHMM}-{slug}.md)
@@ -66,7 +67,9 @@ product/
 └── exposure-plans/      <- exposure plans ({YYYY-MM-DD-HHMM}-{spec-slug}.md)
 ```
 
-Every artifact except `overview.md` and personas carries a `{YYYY-MM-DD-HHMM}-` prefix so listings sort chronologically. The timestamp is the creation date: revisions (e.g. a spec after a critique panel) edit the file in place without renaming.
+Every artifact except `overview.md`, `corrections.md`, and personas carries a `{YYYY-MM-DD-HHMM}-` prefix so listings sort chronologically. The timestamp is the creation date: revisions (e.g. a spec after a critique panel) edit the file in place without renaming.
+
+**Belief status.** An unverified belief in `overview.md` may carry an annotation appended on the belief's own line: `— confirmed/contradicted/weakened by [file] (date)`. The three status keywords are fixed English tokens (like `source:` values); the surrounding text follows the file's language, and a belief with no status is still unverified. Provenance hierarchy: `source: real` > `survey` > `secondary` > `synthetic` — only real/survey evidence confirms; synthetic evidence never does (supporting synthetic evidence makes a belief promising, with no annotation). Beliefs are annotated, never deleted, and only with the user's approval — `/review-evidence`, `/extract-insights`, and `/analyze-survey` propose these annotations.
 
 Artifacts that can come from synthetic or real sources declare it in their header: interview transcripts and insights carry `source: synthetic | real | survey`; personas carry `source: derived` when built bottom-up from real evidence (`/derive-personas`) — synthetic and derived personas share `product/personas/`.
 

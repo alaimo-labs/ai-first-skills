@@ -25,7 +25,9 @@ Input: $ARGUMENTS
 
 6. **Save** to `product/insights/{YYYY-MM-DD-HHMM}-{slug}.md` with a header listing the survey design file, the results source, n, and `source: survey`.
 
-7. **Close with the natural next step in one line:** feed the findings into a spec (`/write-spec`), design follow-up interviews for the open "why"s (`/design-interview`), or — once enough real data has accumulated — derive evidence-based personas (`/derive-personas`).
+7. **Contrast against the overview's beliefs.** Read the unverified beliefs in `product/overview.md` (skip silently if the file or section doesn't exist). If a survey finding confirms or contradicts one, say so in one line, citing the analysis file, and offer to annotate the belief on its own line in the overview: `— confirmed/contradicted/weakened by [analysis file] (date)` (status keywords stay in English; no status = still unverified). Survey evidence comes from real people, so it can confirm or contradict — but within the limits established in step 2: with a small or self-selected sample, propose `weakened` rather than `contradicted`, and promising-in-conversation rather than `confirmed`. Nothing is written without the user's approval.
+
+8. **Close with the natural next step in one line:** feed the findings into a spec (`/write-spec`), design follow-up interviews for the open "why"s (`/design-interview`), or — once enough real data has accumulated — derive evidence-based personas (`/derive-personas`).
 
 ## Language
 

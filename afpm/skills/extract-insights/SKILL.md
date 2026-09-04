@@ -20,3 +20,5 @@ Input: $ARGUMENTS
 3. **Cross-interview synthesis.** When multiple transcripts are involved, flag insights that recur across interviewees.
 
 4. **Save** to `product/insights/{YYYY-MM-DD-HHMM}-{slug}.md` with a header listing sources and `source: synthetic` or `source: real` (mixed corpora list both per source). For synthetic sources, include the one-time reminder that synthetic insights are hypotheses to verify with real users.
+
+5. **Contrast against the overview's beliefs.** Read the unverified beliefs in `product/overview.md` (skip silently if the file or section doesn't exist). If an insight confirms or contradicts one, say so in one line, citing the insight, and offer to annotate the belief on its own line in the overview: `— confirmed/contradicted/weakened by [insights file] (date)` (status keywords stay in English; no status = still unverified). Only real evidence confirms: insights from `source: real` transcripts can earn `confirmed` or `contradicted`; synthetic insights only signal — call the belief promising in conversation, or propose at most `weakened` when they contradict it, never `confirmed`. Nothing is written without the user's approval.
