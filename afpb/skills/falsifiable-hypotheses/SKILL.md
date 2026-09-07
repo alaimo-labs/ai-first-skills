@@ -16,6 +16,8 @@ Write hypotheses and experiment docs in the language of the conversation.
 ```markdown
 # Hypothesis: {short name}
 
+**Tests:** {the `product/overview.md` belief this hypothesis puts at stake, quoted — omit when no belief registry exists}
+
 **We believe that** {specific user segment, characterized by behavior or role}
 **will** {observable behavior}
 **because** {the underlying need or pain}.
@@ -43,7 +45,7 @@ For each hypothesis, define before building:
 2. **Instrumentation** — which events/records capture the signal, and where they'll be stored (analytics events, database rows, form submissions).
 3. **Decision rule** — advance / iterate / stop, mapped to signal outcomes, written down in advance.
 
-Save to `product/hypotheses/{slug}.md`. When the experiment concludes, append an **Outcome** section: observed signal, decision taken, and what was learned — this becomes the evidence trail for the final presentation.
+Save to `product/hypotheses/{slug}.md`. When the experiment concludes, append an **Outcome** section: observed signal, decision taken, and what was learned — this becomes the evidence trail for the final presentation. If the hypothesis cites a `product/overview.md` belief, the Outcome is also that belief's verdict: propose annotating it on its own line — `— confirmed/contradicted/weakened by [hypotheses file] (date)`, fixed English keywords — with the user's approval, never silently.
 
 ## Anti-patterns
 

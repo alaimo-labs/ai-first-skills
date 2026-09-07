@@ -24,12 +24,12 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 
 | Workflow             | What it does                                                  |
 | -------------------- | ------------------------------------------------------------- |
-| `/start-product`     | Bootstrap `product/overview.md`: context + unverified beliefs |
+| `/start-product`     | Bootstrap `product/overview.md`: mode, context, sponsor (internal), ranked and tagged unverified beliefs |
 | `/research-market`   | Secondary research/benchmarking, every claim provenance-tagged |
 | `/generate-personas` | Generate a diverse set of synthetic personas for your product |
 | `/interview-persona` | Interview a persona — exploration or validation mode          |
 | `/extract-insights`  | Extract actionable insights from transcripts (synthetic/real) |
-| `/design-interview`  | Design an interview guide for research with real users        |
+| `/design-interview`  | Design an interview guide + recruitment plan for real-user research |
 | `/test-interview-guide` | Pretest a guide against a persona and fix what breaks      |
 | `/design-survey`     | Design a survey questionnaire, ready for any survey tool      |
 | `/analyze-survey`    | Analyze survey results: quant summary, themes, insights       |
@@ -54,7 +54,7 @@ Model-invoked — the agent loads them automatically when the topic matches.
 | `interview-guides`     | Discussion-guide design: goals → questions, funnel, non-leading; pretesting |
 | `survey-design`        | Questionnaire craft, wording bias, scales, results analysis       |
 | `cognitive-frictions`  | The MFC lens: four friction categories, severity, opportunity bar |
-| `feature-specs`        | Spec structure: journey, stories, acceptance criteria, hypothesis |
+| `feature-specs`        | Spec structure: journey, stories, criteria, hypothesis, risk-tagged assumptions |
 | `persona-critique`     | In-character document reviews and panel synthesis                 |
 | `exposure-plans`       | Build ≠ reveal, belief decomposition, level design, validations   |
 
@@ -64,7 +64,7 @@ Artifacts live in your repo:
 
 ```
 product/
-├── overview.md          # product context + unverified beliefs
+├── overview.md          # product context, sponsor (internal), tagged + ranked belief registry
 ├── corrections.md       # log of human corrections to AI proposals (kept by /review-evidence)
 ├── personas/            # one file per persona (synthetic or derived)
 ├── interviews/          # transcripts, synthetic and real
@@ -77,6 +77,8 @@ product/
 ├── specs/               # feature specs
 └── exposure-plans/      # exposure plans
 ```
+
+`overview.md` is the **single belief registry**: every unverified belief lives there — never in per-idea or per-spec lists — tagged by scope (`[product]` or `[feature: {slug}]`) and risk (`[value]` / `[usability]` / `[feasibility]` / `[viability]`), ranked by impact × uncertainty. Internal products also record their **sponsor**: who funds the product and what they need to see to keep funding it.
 
 As evidence arrives, beliefs in `overview.md` get a status appended on the belief's own line — `— confirmed/contradicted/weakened by [file] (date)` (keywords stay in English, like `source:` values; no status = still unverified). Only evidence from real users confirms; synthetic evidence just makes a belief promising. `/review-evidence`, `/extract-insights`, and `/analyze-survey` propose these annotations — you approve before anything is written.
 

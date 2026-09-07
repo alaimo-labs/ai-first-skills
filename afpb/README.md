@@ -42,10 +42,13 @@ Artifacts live in your repo:
 
 ```
 product/
+├── overview.md          # belief registry (optional — cited and annotated by hypotheses when present)
 ├── hypotheses/          # hypothesis + experiment docs (with Outcome sections)
 ├── specs/               # feature specs
 └── exposure-plans/      # exposure plans
 ```
+
+If the repo also runs discovery (for example with the companion `afpm` plugin), `product/overview.md` acts as the single registry of unverified beliefs: `/formulate-hypothesis` cites the belief a hypothesis tests, and when the experiment's Outcome lands, proposes annotating it on the belief's own line — `— confirmed/contradicted/weakened by [file] (date)` — always with your approval.
 
 ## License
 

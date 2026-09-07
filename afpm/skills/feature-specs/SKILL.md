@@ -46,12 +46,26 @@ We believe {users} will {behavior} because {motivation}.
 We're wrong if {observable signal}.
 
 ## Assumptions
-- {unvalidated belief the spec rests on}
+{References to `product/overview.md` — the single belief registry; the spec keeps no separate list.}
+- [feature: {slug}] [{risk}] {belief as registered} {— owner: {role}, only when it differs from the default}
 ```
+
+## Assumptions and risk
+
+Assumptions live in `product/overview.md` — the single belief registry — tagged `[feature: {slug}]`; the spec's Assumptions section references them and never keeps its own list. New assumptions surfaced while drafting are proposed to the registry with the user's approval. Classify each by risk, one of four fixed English tokens:
+
+| Risk | The question it carries | Default owner |
+| --------------- | ------------------------------------------------------------ | ------------- |
+| `[value]` | Do they want it — does it solve a problem they care about? | PM |
+| `[usability]` | Can they figure out how to use it? | UX |
+| `[feasibility]` | Can we build it with the time, skills, and tech we have? | Tech |
+| `[viability]` | Does it work for the business — revenue or sponsorship? | PM |
+
+The owner derives from the risk; write it down only when the real owner differs from the default. Every assumption needs a nameable owner — an assumption nobody owns is an assumption nobody will test.
 
 ## Quality bar
 
-- **Traceable.** Every story and journey step must be justified by an insight or interview moment. If the evidence doesn't exist, don't invent it — write the claim under Assumptions instead. The Assumptions section is a feature, not a confession.
+- **Traceable.** Every story and journey step must be justified by an insight or interview moment. If the evidence doesn't exist, don't invent it — register the claim as an assumption instead. The Assumptions section is a feature, not a confession.
 - **Journey is grounded, not aspirational.** Steps describe what interviews revealed about how this persona actually works, with the feature inserted at the point of pain — not an idealized flow. Name the step where value lands.
 - **Critical stories only: 3–5.** This is discovery, not a backlog. Each story should be INVEST-shaped — independent, negotiable, valuable, estimable, small, testable — with the persona's real name as the role, never a generic "user."
 - **Acceptance criteria are observable: 3–6 per story.** Each one answers yes/no by looking at the product — no "works well", no "is intuitive". Include at least one edge case. Well-written criteria double as validation signals for the exposure plan later.

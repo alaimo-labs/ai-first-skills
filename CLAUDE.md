@@ -53,7 +53,7 @@ Skills read and write product artifacts in the user's working repo:
 
 ```
 product/
-├── overview.md          <- product context (name, description, target users, unverified beliefs)
+├── overview.md          <- product context (name, description, mode, target users, sponsor if internal, known facts if existing, tagged + ranked unverified beliefs)
 ├── corrections.md       <- log of human corrections to AI proposals (living file; /review-evidence appends dated entries: artifact, what the AI proposed, what the human decided, why)
 ├── personas/{slug}.md   <- one file per persona
 ├── interviews/          <- interview transcripts, synthetic and real ({YYYY-MM-DD-HHMM}-{persona-or-interviewee-slug}.md)
@@ -64,12 +64,17 @@ product/
 ├── journeys/            <- user journeys + cognitive friction maps ({YYYY-MM-DD-HHMM}-{slug}.md)
 ├── ideas/               <- clarified idea briefs ({YYYY-MM-DD-HHMM}-{slug}.md)
 ├── specs/               <- feature specs ({YYYY-MM-DD-HHMM}-{slug}.md)
+├── hypotheses/          <- hypothesis + experiment docs ({slug}.md, no timestamp prefix; Outcome section appended when the experiment concludes — written by afpb)
 └── exposure-plans/      <- exposure plans ({YYYY-MM-DD-HHMM}-{spec-slug}.md)
 ```
 
-Every artifact except `overview.md`, `corrections.md`, and personas carries a `{YYYY-MM-DD-HHMM}-` prefix so listings sort chronologically. The timestamp is the creation date: revisions (e.g. a spec after a critique panel) edit the file in place without renaming.
+Every artifact except `overview.md`, `corrections.md`, personas, and hypotheses carries a `{YYYY-MM-DD-HHMM}-` prefix so listings sort chronologically. The timestamp is the creation date: revisions (e.g. a spec after a critique panel) edit the file in place without renaming.
 
-**Belief status.** An unverified belief in `overview.md` may carry an annotation appended on the belief's own line: `— confirmed/contradicted/weakened by [file] (date)`. The three status keywords are fixed English tokens (like `source:` values); the surrounding text follows the file's language, and a belief with no status is still unverified. Provenance hierarchy: `source: real` > `survey` > `secondary` > `synthetic` — only real/survey evidence confirms; synthetic evidence never does (supporting synthetic evidence makes a belief promising, with no annotation). Beliefs are annotated, never deleted, and only with the user's approval — `/review-evidence`, `/extract-insights`, and `/analyze-survey` propose these annotations.
+**Overview fields.** `overview.md` opens with a `mode:` line — `{new | existing} · {commercial | internal}`, fixed English tokens like `source:` values. Internal products add a Sponsor section: who funds the product and what they need to see to keep funding it. Existing products add a what-we-know section — facts with their evidence named on the same line — kept apart from the unverified beliefs. `/start-product` builds all of this.
+
+**Belief tags.** Every unverified belief in `overview.md` opens with two tags, fixed English tokens in any language (like `source:` values): scope — `[product]` (product-wide, written by `/start-product`) or `[feature: {slug}]` (tied to one bet; `/clarify-idea` and `/write-spec` append these to the same list — `overview.md` is the single belief registry, no idea brief, spec, or hypothesis keeps its own assumptions list) — and risk — one of four: `[value]` (do they want it?), `[usability]` (can they figure it out?), `[feasibility]` (can we build it?), `[viability]` (revenue or sponsorship). `/start-product` emits only `[value]`/`[viability]`; feature-level skills use all four. The default owner derives from the risk (value/viability → PM, usability → UX, feasibility → Tech) and is written down only when the real owner differs — documented in `feature-specs`. The belief text follows the file's language. The list is ranked by impact × uncertainty.
+
+**Belief status.** An unverified belief in `overview.md` may carry an annotation appended on the belief's own line: `— confirmed/contradicted/weakened by [file] (date)`. The three status keywords are fixed English tokens (like `source:` values); the surrounding text follows the file's language, and a belief with no status is still unverified. Provenance hierarchy: `source: real` > `survey` > `secondary` > `synthetic` — only real/survey evidence confirms; synthetic evidence never does (supporting synthetic evidence makes a belief promising, with no annotation). Beliefs are annotated, never deleted, and only with the user's approval — `/review-evidence`, `/extract-insights`, and `/analyze-survey` propose these annotations; in afpb, a hypothesis doc cites the belief it tests and proposes the annotation when its experiment's Outcome lands (observed behavior from real exposure counts as real evidence).
 
 Artifacts that can come from synthetic or real sources declare it in their header: interview transcripts and insights carry `source: synthetic | real | survey`; personas carry `source: derived` when built bottom-up from real evidence (`/derive-personas`) — synthetic and derived personas share `product/personas/`.
 

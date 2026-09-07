@@ -15,7 +15,7 @@ Input: $ARGUMENTS
 
 1. **Capture the idea.** From the arguments, or ask for it in one line if empty. Restate it back in one sentence to anchor the starting point.
 
-2. **Load the evidence first.** Read `product/overview.md`, the personas, recent insights, and any market research in `product/research/`. Facts that live in these artifacts are looked up, never asked — the user's time goes to decisions only. If a market question dominates the idea (competitors, pricing) and no research exists, suggest `/research-market` in one line and continue.
+2. **Load the evidence first.** Read `product/overview.md` — belief registry included: note which registered beliefs, product-wide or from other features, touch this idea — plus the personas, recent insights, and any market research in `product/research/`. Facts that live in these artifacts are looked up, never asked — the user's time goes to decisions only. If a market question dominates the idea (competitors, pricing) and no research exists, suggest `/research-market` in one line and continue.
 
 3. **Question loop.** Rules, in order of importance:
    - **One question at a time.** Ask, wait for the answer, then decide the next question. Never a battery of questions.
@@ -28,9 +28,11 @@ Input: $ARGUMENTS
 
 4. **Synthesize** into an idea brief: the clarified idea (problem, persona, value, smallest shape), the decisions made along the way, and the open assumptions ranked by how badly they could kill the idea. **Show the full brief in the conversation** — never ask the user to confirm or save content they haven't seen yet.
 
-5. **Save** to `product/ideas/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date) once the user has seen the brief and agreed. Discarded ideas are worth saving too — note *why* they died; that's product memory.
+5. **Register the assumptions in the overview — the brief keeps no list of its own.** `product/overview.md` is the single belief registry. For each open assumption: if it matches a belief already registered, the brief references that line; if it's new, propose appending it to the overview's unverified beliefs as `[feature: {slug}] [risk] {assumption}` — slug = the brief's slug; risk = `[value]`, `[usability]`, `[feasibility]`, or `[viability]` — and write nothing to the overview without the user's approval. The brief's assumptions section then holds references to the registry (each belief as registered, in kill-order), never an independent list. No `product/overview.md` yet → suggest `/start-product` in one line and keep the assumptions in the brief, marked as pending registration.
 
-6. **Close with the natural next step in one line:** if the idea holds, draft the spec (`/write-spec`); if a risky assumption dominates, test it first (`/interview-persona` in validation mode).
+6. **Save** to `product/ideas/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date) once the user has seen the brief and agreed. Discarded ideas are worth saving too — note *why* they died; that's product memory.
+
+7. **Close with the natural next step in one line:** if the idea holds, draft the spec (`/write-spec`); if a risky assumption dominates, test it first (`/interview-persona` in validation mode).
 
 ## Language
 

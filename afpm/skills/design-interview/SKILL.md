@@ -23,9 +23,14 @@ Input: $ARGUMENTS
 
 5. **Present and iterate.** Walk the user through the goal→question mapping — every question they can't trace to a goal gets cut. Adjust until they own it.
 
-6. **Save** to `product/interview-guides/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date).
+6. **Draft the recruitment plan** — the guide's closing section: where, how, and how many.
+   - **Channels:** where these participants actually are, named concretely — own customer base, communities, LinkedIn, intercepts, panels — not "social media".
+   - **Screening:** 2–3 screener questions derived from the participant profile, with explicit disqualifiers — data from the wrong people is worse than no data.
+   - **Target:** how many interviews (typically 5–8 per segment; saturation — answers start repeating — beats hitting a quota).
 
-7. **Close with next steps in one line each:** pretest the guide before it meets real participants (`/test-interview-guide` — runs the guide against a synthetic persona and diagnoses what breaks), and after the real interviews, bring the transcripts to `/extract-insights`.
+7. **Save** to `product/interview-guides/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date).
+
+8. **Close with next steps in one line each:** pretest the guide before it meets real participants (`/test-interview-guide` — runs the guide against a synthetic persona and diagnoses what breaks), and after the real interviews, bring the transcripts to `/extract-insights`.
 
 ## Language
 

@@ -52,6 +52,11 @@ ask for objections, not praise.
 
 ## Wrap-up (5 min)
 "What should I have asked?", referrals to other participants, thanks.
+
+## Recruitment plan
+Where these participants are (channels, named concretely), how they're
+screened (screener questions with disqualifiers), and how many interviews
+to run.
 ```
 
 ## Quality bar
@@ -60,6 +65,7 @@ ask for objections, not praise.
 - Fits the duration: ~1 main question plus probes per 5 minutes. A 30-minute guide with 20 questions is a survey read aloud.
 - The falsification note per goal is written down — interviewers hear what they hope for unless the guide says what "we were wrong" sounds like.
 - In validation mode, behavior questions come strictly before the stimulus.
+- The recruitment plan is concrete: named channels (not "social media"), screeners with explicit disqualifiers, saturation over quota.
 
 ## Pretesting the guide
 
