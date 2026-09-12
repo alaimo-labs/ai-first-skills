@@ -28,7 +28,7 @@ Input: $ARGUMENTS
 
 4. **Probe value risk** — would anyone want this? — by the first axis, adding the internal probes when the product is internal:
    - **New:** does the problem actually exist — who has it badly enough to act? would they change from what they do today?
-   - **Existing:** why do current users actually use it (not why it was built)? which segment gets the most value from it? why do the ones who leave, leave? what do we believe about the next bet?
+   - **Existing:** why do current users actually use it (not why it was built)? which segment gets the most value from it? why do the ones who leave, leave? what do we believe about the next bet? — the bet may arrive as a problem for a segment ("improve X for Y") or as a decided feature; accept either as stated and don't push a shapeless bet toward a feature: an opportunity is a valid answer.
    - **Internal (on top of the above):** would people abandon their current workaround for it? would anyone use it voluntarily, if nobody mandated it?
 
 5. **Probe viability risk** — can this sustain itself? — by the second axis:
@@ -38,7 +38,7 @@ Input: $ARGUMENTS
 6. **In existing mode, separate what's known from what's believed.** "What we know" holds facts backed by evidence — usage data, revenue, support tickets, past research — each fact naming its evidence on the same line. "Unverified beliefs" holds the frontier: what the team assumes but has never checked. When the user states something as fact, ask what the evidence is; no evidence → it's a belief.
 
 7. **Tag, rank, and cap the beliefs.** Push for 3–5 beliefs (hard cap 5 — more dilutes focus), each concrete enough that an interview or survey could prove it wrong. If the user blanks, the probes above are the prompts. A belief everyone would agree with isn't a belief, it's a platitude — sharpen it until it's falsifiable. Each belief line opens with two tags, fixed English tokens in every language (like `source:` values):
-   - **Scope:** `[product]` — every belief this skill writes is product-wide. (Feature-level skills later append `[feature: {slug}]` beliefs to the same list; the tag exists so product bets and feature bets never blur.)
+   - **Scope:** `[product]` — every belief this skill writes is product-wide. (Later skills append to the same list at two narrower scopes — `[opportunity: {slug}]` from `/frame-opportunity`, `[feature: {slug}]` from `/clarify-idea` and `/write-spec`; the tag exists so product bets, problem bets, and feature bets never blur.)
    - **Risk:** `[value]` (do they want it?) or `[viability]` (does it sustain itself — revenue or sponsorship?). The registry's risk vocabulary has four tokens — `[value]`, `[usability]`, `[feasibility]`, `[viability]` — but this skill emits only the two it probes; feature-level skills use the full set.
 
    Rank by impact × uncertainty: the belief that would change the product most if proven wrong, and has the least evidence behind it, goes first. Name belief #1 as the first to attack — in conversation and in the overview.
@@ -75,9 +75,10 @@ Input: $ARGUMENTS
 
 9. **Close with the next step in one line, by mode:**
    - **New** → `/generate-personas`. If the beliefs raise market questions (does this already exist? what does it cost?), mention `/research-market` as an optional detour before the personas.
-   - **Existing, with a concrete feature or bet in mind** → `/clarify-idea` to turn it into a brief.
+   - **Existing, with a bet at problem level** ("improve X for Y", a strategy line, a signal without a solution) → `/frame-opportunity` to frame it before any solution is chosen.
+   - **Existing, with a decided feature in mind** → `/clarify-idea` to turn it into a brief (it will ask which opportunity the feature answers; "none" is a valid, recorded answer).
    - **Existing, no specific bet yet** → attack belief #1: `/derive-personas` if the repo holds real evidence; otherwise `/design-interview` — the users exist and are reachable, so go talk to them about belief #1. Mention `/generate-personas` only as an optional rehearsal if the PM wants to practice the interview before facing real users.
 
 ## Language
 
-Conversation and the saved overview in the language of the conversation (section headings included). The `mode:` values and the belief tags (`[product]`, `[feature: {slug}]`, `[value]`, `[usability]`, `[feasibility]`, `[viability]`) are fixed English tokens in every language, like `source:` values.
+Conversation and the saved overview in the language of the conversation (section headings included). The `mode:` values and the belief tags (`[product]`, `[opportunity: {slug}]`, `[feature: {slug}]`, `[value]`, `[usability]`, `[feasibility]`, `[viability]`) are fixed English tokens in every language, like `source:` values.

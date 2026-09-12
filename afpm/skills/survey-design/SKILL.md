@@ -24,6 +24,7 @@ Same chain as interviews: 2–4 learning goals (from assumptions, synthetic insi
 - **Ranking** — only with ≤5 items; beyond that respondents satisfice.
 - **Open-ended** — expensive to answer and to analyze; 1–3 maximum, placed near the end. One "what's the hardest part of X for you?" open-end is often the most valuable question in the survey.
 - **Screening questions** — first, to qualify respondents against the target profile; route out those who don't match rather than diluting the data.
+- **Screening + opt-in block** — last, to recruit interviewees among the respondents: 1–2 disqualifiers stricter than the survey screening (the interview profile is narrower), one consent question ("would you accept a 30-minute conversation about this?"), and an optional contact field shown only to those who say yes. Never required; never before the substantive questions.
 
 ### Wording and ordering
 
@@ -48,6 +49,11 @@ S1. {question} → disqualify if {answer}
 Q1. {question} [type: single choice | likert-5 | open | …]
    - {options if applicable}
    > Goal: {which learning goal this serves}
+
+## Screening + opt-in (interview recruitment)
+R1. {disqualifier for the interview profile} → not a candidate if {answer}
+R2. Would you accept a 30-minute conversation about this? [yes / no]
+R3. If yes, how can we reach you? [open, optional]
 ```
 
 The `> Goal:` annotations are for the team, not the respondent — strip them when pasting into the survey tool.
@@ -58,6 +64,7 @@ The `> Goal:` annotations are for the team, not the respondent — strip them wh
 - **Closed questions:** distribution per question, then cut by the segments that matter (from screening/demographic questions). A difference between segments is the finding; an overall average usually hides it.
 - **Open-ends:** code them like interview data — group responses into recurring themes, count mentions per theme, keep 1–2 verbatim quotes per theme as evidence.
 - **Map back to goals.** Structure the analysis by learning goal, not by question order: what did we believe, what did the data show, what's the decision.
+- **List the opt-ins.** When the design carried the screening + opt-in block, close with the recruitment pool: who accepted a conversation, tagged by whether their answers confirm or contradict the beliefs at stake — interviews should go first to the ones who contradict.
 - **Honesty over neatness.** Surveys say *what*, not *why* — flag every "why" the data raises as a candidate for follow-up interviews. Note self-selection and wording limitations where they bite.
 
 Insights extracted from survey data follow the same quality bar as the `insight-extraction` skill: actionable, grounded (in numbers or quotes), prioritized.

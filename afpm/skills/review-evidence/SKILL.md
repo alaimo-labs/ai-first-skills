@@ -15,7 +15,7 @@ Input: $ARGUMENTS
 
 1. **Establish the window and gather the evidence.** Read `product/overview.md` (the beliefs) and `product/corrections.md` if it exists — its most recent entry marks the last review; the arguments may override the window; if neither exists, this is the first review: cover everything and say so. Then list every artifact under `product/` created or modified in the window: prefer `git log` when the repo is under git; without git, fall back to the `{YYYY-MM-DD-HHMM}-` filename prefixes (and note that in-place revisions — a spec edited after a critique — are invisible to filenames alone).
 
-2. **Contrast the new evidence against each belief.** For every belief, ask of the new artifacts: does any confirm it, contradict it, or leave it untouched? Cite the evidence file for every verdict — no verdict without a file behind it. Respect the provenance hierarchy, `source: real` > `survey` > `secondary` > `synthetic`:
+2. **Contrast the new evidence against each belief.** For every belief — whatever its scope tag, `[product]`, `[opportunity: {slug}]`, or `[feature: {slug}]`; the three are annotated the same way — ask of the new artifacts: does any confirm it, contradict it, or leave it untouched? Cite the evidence file for every verdict — no verdict without a file behind it. Respect the provenance hierarchy, `source: real` > `survey` > `secondary` > `synthetic`:
    - Real interviews and survey results can confirm or contradict a belief (surveys within the limits their analysis states — small or self-selected samples weaken rather than confirm).
    - Secondary research raises or lowers a belief's priority, but market evidence cannot verify beliefs about your users (see the `secondary-research` skill).
    - Synthetic evidence never confirms a belief on its own. Supporting synthetic evidence makes the belief *promising* — say so in the report, propose no annotation. Contradicting synthetic evidence can at most propose `weakened`.
@@ -30,6 +30,7 @@ Input: $ARGUMENTS
 
 4. **Report what's drifting.** The pendings the loop tends to lose:
    - Beliefs with no evidence yet, from any source.
+   - Opportunity briefs in `product/opportunities/` whose research agenda has no artifact against it yet — a framed problem nobody started researching — and, once an opportunity's beliefs are contradicted, idea briefs that still hang from it.
    - `source: synthetic` insights never verified against real users.
    - Specs in `product/specs/` with no matching critique (`{YYYY-MM-DD-HHMM}-critique-{spec-slug}.md` in `product/insights/`).
    - If `product/hypotheses/` exists: hypothesis files whose Outcome section is still empty — an experiment exposed but never scored.

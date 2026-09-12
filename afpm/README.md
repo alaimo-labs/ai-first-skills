@@ -4,7 +4,7 @@ Agent skills for discovery and validation with synthetic users. Companion plugin
 
 ## Overview
 
-This plugin gives your coding agent a product-discovery toolkit: create synthetic personas, interview them, extract insights, run critique panels over your specs, and slice features into exposure plans. It also bridges to real research: design interview guides and surveys, analyze the results, and derive evidence-based personas from the patterns. All artifacts are plain markdown files in your repo under `product/` — no external services.
+This plugin gives your coding agent a product-discovery toolkit: frame opportunities before choosing solutions, create synthetic personas, interview them, extract insights, run critique panels over your specs, and slice features into exposure plans. It also bridges to real research: design interview guides and surveys, analyze the results, and derive evidence-based personas from the patterns. All artifacts are plain markdown files in your repo under `product/` — no external services.
 
 Content is written in English; all deliverables come out in the language you work in.
 
@@ -25,17 +25,18 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | Workflow             | What it does                                                  |
 | -------------------- | ------------------------------------------------------------- |
 | `/start-product`     | Bootstrap `product/overview.md`: mode, context, sponsor (internal), ranked and tagged unverified beliefs |
+| `/frame-opportunity` | Frame a problem for a segment — signals, beliefs, research agenda — before any solution |
 | `/research-market`   | Secondary research/benchmarking, every claim provenance-tagged |
 | `/generate-personas` | Generate a diverse set of synthetic personas for your product |
 | `/interview-persona` | Interview a persona — exploration or validation mode          |
 | `/extract-insights`  | Extract actionable insights from transcripts (synthetic/real) |
-| `/design-interview`  | Design an interview guide + recruitment plan for real-user research |
+| `/design-interview`  | Design an interview guide + recruitment plan (survey opt-ins first) for real-user research |
 | `/test-interview-guide` | Pretest a guide against a persona and fix what breaks      |
-| `/design-survey`     | Design a survey questionnaire, ready for any survey tool      |
+| `/design-survey`     | Design a survey questionnaire with an interview opt-in block, ready for any survey tool |
 | `/analyze-survey`    | Analyze survey results: quant summary, themes, insights       |
 | `/derive-personas`   | Derive evidence-based personas from real research patterns    |
 | `/map-frictions`     | Map cognitive frictions across a journey's steps (MFC)        |
-| `/clarify-idea`      | Sharpen a fuzzy idea via one-question-at-a-time brainstorming |
+| `/clarify-idea`      | Sharpen a fuzzy idea via one-question-at-a-time brainstorming; names its parent opportunity or declares none |
 | `/write-spec`        | Draft an evidence-grounded spec: journey, stories, criteria   |
 | `/critique-spec`     | Persona panel critiques a spec/PRD, with synthesis            |
 | `/slice-feature`     | Turn a spec's hypothesis into an Exposure Plan                |
@@ -47,6 +48,7 @@ Model-invoked — the agent loads them automatically when the topic matches.
 
 | Skill                  | Knowledge it carries                                              |
 | ---------------------- | ----------------------------------------------------------------- |
+| `opportunity-framing`  | Opportunity vs. solution vs. outcome, signals vs. proof, research agenda, the OST as files |
 | `secondary-research`   | Provenance discipline, source hierarchy, lanes, belief mapping    |
 | `synthetic-personas`   | Archetype principles, persona structure, diversity requirements   |
 | `synthetic-interviews` | In-character interview roleplay; exploration vs. validation modes |
@@ -73,12 +75,15 @@ product/
 ├── insights/            # extracted insights, survey analyses & critique panels
 ├── research/            # secondary research & benchmarks
 ├── journeys/            # user journeys + cognitive friction maps
-├── ideas/               # clarified idea briefs
+├── opportunities/       # opportunity briefs: problem + segment + signals + research agenda, no solution yet
+├── ideas/               # clarified idea briefs (each names its parent opportunity, or `none (declared)`)
 ├── specs/               # feature specs
 └── exposure-plans/      # exposure plans
 ```
 
-`overview.md` is the **single belief registry**: every unverified belief lives there — never in per-idea or per-spec lists — tagged by scope (`[product]` or `[feature: {slug}]`) and risk (`[value]` / `[usability]` / `[feasibility]` / `[viability]`), ranked by impact × uncertainty. Internal products also record their **sponsor**: who funds the product and what they need to see to keep funding it.
+`overview.md` is the **single belief registry**: every unverified belief lives there — never in per-opportunity, per-idea, or per-spec lists — tagged by scope (`[product]`, `[opportunity: {slug}]`, or `[feature: {slug}]`) and risk (`[value]` / `[usability]` / `[feasibility]` / `[viability]`), ranked by impact × uncertainty. Internal products also record their **sponsor**: who funds the product and what they need to see to keep funding it.
+
+The three scopes mirror an **Opportunity Solution Tree**: `overview.md` (outcome + product beliefs) → `opportunities/` (a problem for a segment, framed by `/frame-opportunity`) → `ideas/` (candidate solutions, each hanging from an opportunity) → `specs/` → `exposure-plans/`. The opportunity level is optional — you can take a decided feature straight to `/clarify-idea` — but skipping it is a declared decision: the idea brief records `opportunity: none (declared)` and registers the problem it assumes as a belief.
 
 As evidence arrives, beliefs in `overview.md` get a status appended on the belief's own line — `— confirmed/contradicted/weakened by [file] (date)` (keywords stay in English, like `source:` values; no status = still unverified). Only evidence from real users confirms; synthetic evidence just makes a belief promising. `/review-evidence`, `/extract-insights`, and `/analyze-survey` propose these annotations — you approve before anything is written.
 

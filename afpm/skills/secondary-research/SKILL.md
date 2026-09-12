@@ -41,7 +41,7 @@ Per competitor, capture: who it's for, core value proposition, pricing, notable 
 
 ## Mapping back to beliefs
 
-The payoff step: for each unverified belief in `product/overview.md` (and open assumptions in ideas/specs), state whether the findings **support**, **contradict**, or **say nothing**. A contradiction doesn't kill a belief — the source's segment may differ from yours — but it raises its priority for primary research. End with the beliefs that secondary evidence cannot touch: those are the interview/survey agenda.
+The payoff step: for each unverified belief in `product/overview.md` the research touched — whatever its scope tag, `[product]`, `[opportunity: {slug}]`, or `[feature: {slug}]` — state whether the findings **support**, **contradict**, or **say nothing**. When an opportunity brief in `product/opportunities/` is in play, its research agenda says which beliefs the run was meant to resolve; report on those first. A contradiction doesn't kill a belief — the source's segment may differ from yours — but it raises its priority for primary research. End with the beliefs that secondary evidence cannot touch: those are the primary-research agenda — split into what a survey can count and what only interviews can explain.
 
 ## Parallelization
 
@@ -55,6 +55,7 @@ source: secondary
 method: web | model-knowledge | mixed
 date: {YYYY-MM-DD}
 question: {what this research set out to answer}
+opportunity: {slug}            <- only when the run was scoped to an opportunity brief
 ---
 
 # Research: {topic}
@@ -79,3 +80,4 @@ question: {what this research set out to answer}
 - "A competitor exists" read as "the market is validated" — or as "the space is taken"
 - Market sizes with three significant figures sourced from a blog
 - Treating a finished benchmark as a reason to skip talking to users
+- Annotating beliefs in `product/overview.md` from secondary findings — the impact table stays in the research file; `/review-evidence` decides what, if anything, reaches the registry

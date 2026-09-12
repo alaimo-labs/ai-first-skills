@@ -1,7 +1,7 @@
 ---
 name: design-interview
 description: Design an interview guide for real user research from what you want to learn or validate — grounded in your insights, assumptions, and personas
-argument-hint: "[what you want to learn/validate, or an insight/idea/spec file]"
+argument-hint: "[what you want to learn/validate, or an opportunity/insight/idea/spec file]"
 disable-model-invocation: true
 ---
 
@@ -13,9 +13,9 @@ Input: $ARGUMENTS
 
 ## Workflow
 
-1. **Resolve the learning goals.** If the arguments state them or name a file (an insight, idea brief, or spec), start there. Otherwise scan `product/` for the strongest candidates — open assumptions in ideas/specs, insights marked `source: synthetic` awaiting verification, hypotheses — propose 2–4 goals and confirm with the user before proceeding.
+1. **Resolve the learning goals.** If the arguments state them or name a file (an opportunity brief, insight, idea brief, or spec), start there. Otherwise scan `product/` for the strongest candidates — the **Research agenda** rows of `product/opportunities/` briefs marked for interviews, what the latest `product/research/` file left as "needs primary research", the "why"s a survey analysis raised, open assumptions in ideas/specs, insights marked `source: synthetic` awaiting verification, hypotheses — propose 2–4 goals and confirm with the user before proceeding.
 
-2. **Load context.** Read `product/overview.md` and the personas relevant to the goals. Ask who the real participants will be; map them to a persona/segment so the guide's participant profile is concrete.
+2. **Load context.** Read `product/overview.md`, the personas relevant to the goals, the opportunity brief when there is one (its segment is the participant profile), `product/research/`, and — if a survey on the same goals has been analyzed — its analysis in `product/insights/` for the opt-in pool. Ask who the real participants will be; map them to a persona/segment so the guide's participant profile is concrete.
 
 3. **Resolve the mode.** Exploration (open discovery) or validation (testing a specific idea/prototype). If not obvious from the goals, ask — one question, two options.
 
@@ -24,7 +24,7 @@ Input: $ARGUMENTS
 5. **Present and iterate.** Walk the user through the goal→question mapping — every question they can't trace to a goal gets cut. Adjust until they own it.
 
 6. **Draft the recruitment plan** — the guide's closing section: where, how, and how many.
-   - **Channels:** where these participants actually are, named concretely — own customer base, communities, LinkedIn, intercepts, panels — not "social media".
+   - **Channels:** the primary source is the survey respondents who opted in to a conversation, when a survey with the screening + opt-in block exists — selected by their answers, prioritizing those who contradict a belief over those who confirm it (the confirmers teach less). Without a survey, or to fill the gaps: where these participants actually are, named concretely — own customer base, communities, LinkedIn, intercepts, panels — not "social media".
    - **Screening:** 2–3 screener questions derived from the participant profile, with explicit disqualifiers — data from the wrong people is worse than no data.
    - **Target:** how many interviews (typically 5–8 per segment; saturation — answers start repeating — beats hitting a quota).
 
