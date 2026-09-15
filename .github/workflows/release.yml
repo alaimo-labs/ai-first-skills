@@ -1,0 +1,44 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Fails if the tag does not match the version in the manifests and CHANGELOG.md
+      - name: Validate tag against manifests
+        run: python3 ci-validate.py
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+
+      - name: Extract release notes from CHANGELOG.md
+        run: |
+          awk -v tag="$TAG" '
+            /^## v/ { if (found) exit; found = ($2 == tag) ; next }
+            found { print }
+          ' CHANGELOG.md > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "No CHANGELOG.md section found for $TAG" >&2
+            exit 1
+          fi
+          echo "--- release notes ---"
+          cat release-notes.md
+        env:
+          TAG: ${{ github.ref_name }}
+
+      - name: Create GitHub release
+        run: gh release create "$TAG" --title "$TAG" --notes-file release-notes.md --verify-tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}

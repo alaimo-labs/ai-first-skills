@@ -13,11 +13,14 @@ Checks:
 - no legacy commands/ directory (commands were migrated to workflow skills)
 - the exposure-plans skill is byte-identical in afpm and afpb (sync rule)
 - plugin README exists
+- CHANGELOG.md: newest "## vX.Y.Z — YYYY-MM-DD" heading matches the marketplace version
+- release tag (when RELEASE_TAG or a GitHub tag ref is set): equals "v" + marketplace version
 
 Exit code 0 = all good, 1 = errors found.
 """
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -178,6 +181,37 @@ def check_exposure_plans_sync() -> None:
         errors.append("exposure-plans SKILL.md differs between afpm and afpb (sync rule in CLAUDE.md)")
 
 
+def check_changelog(version: str) -> None:
+    """CHANGELOG.md is the source of truth: its newest heading must name the manifest version."""
+    path = ROOT / "CHANGELOG.md"
+    if not path.exists():
+        errors.append("missing CHANGELOG.md")
+        return
+    m = re.search(r"^## v(\S+) — \d{4}-\d{2}-\d{2}\s*$", path.read_text(encoding="utf-8"), re.MULTILINE)
+    if not m:
+        errors.append("CHANGELOG.md: no '## vX.Y.Z — YYYY-MM-DD' heading found")
+    elif m.group(1) != version:
+        errors.append(f"CHANGELOG.md: newest heading is v{m.group(1)}, manifests say {version}")
+
+
+def release_tag() -> str:
+    """The tag being released, if any: RELEASE_TAG, or the GitHub Actions tag ref."""
+    if os.environ.get("RELEASE_TAG"):
+        return os.environ["RELEASE_TAG"]
+    if os.environ.get("GITHUB_REF_TYPE") == "tag":
+        return os.environ.get("GITHUB_REF_NAME", "")
+    return ""
+
+
+def check_release_tag(version: str) -> None:
+    """When running against a release tag, the tag must equal 'v' + manifest version."""
+    tag = release_tag()
+    if not tag:
+        return
+    if tag != f"v{version}":
+        errors.append(f"release tag '{tag}' != 'v{version}' (bump the manifests or retag)")
+
+
 def main() -> int:
     marketplace = check_marketplace()
     version = marketplace.get("version", "")
@@ -188,6 +222,8 @@ def main() -> int:
             continue
         check_plugin(plugin_dir, version)
     check_exposure_plans_sync()
+    check_changelog(version)
+    check_release_tag(version)
 
     for w in warnings:
         print(f"WARN  {w}")

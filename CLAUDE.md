@@ -28,6 +28,7 @@ ai-first-skills/
 ├── afpb/                             <- AI-First Product Builder plugin (same layout)
 ├── ci-validate.py                    <- structural validator (run: python3 ci-validate.py)
 ├── .github/workflows/tests.yml       <- CI: validator on every PR/push
+├── .github/workflows/release.yml     <- CI: on a vX.Y.Z tag, validates tag == version and publishes a GitHub release with the CHANGELOG section
 ├── CHANGELOG.md
 ├── CLAUDE.md                         <- this file
 └── AGENTS.md                         <- pointer to this file for non-Claude agents
@@ -108,4 +109,12 @@ Never cut a release just to test a change. Two speeds:
 - `CHANGELOG.md` is the source of truth. Newest `## vX.Y.Z — YYYY-MM-DD` heading = released version.
 - `marketplace.json` and all four plugin manifests (two per plugin: `.claude-plugin/plugin.json` + root `plugin.json`) carry the same version. No per-plugin versioning.
 - Semver: breaking = major; new skills = minor; fixes/docs = patch.
-- Run `python3 ci-validate.py` before committing structural changes.
+- Run `python3 ci-validate.py` before committing structural changes. It also checks that the newest `CHANGELOG.md` heading matches the manifests.
+- **GitHub releases are tag-driven.** Distribution needs only the manifest bump (marketplace installs are pinned to it); the release is provenance. After the version-bump commit lands on `main`:
+
+  ```bash
+  git tag -a vX.Y.Z -m "vX.Y.Z"
+  git push origin vX.Y.Z
+  ```
+
+  `release.yml` then runs the validator with the tag (fails if it doesn't equal `v` + manifest version), extracts that version's section from `CHANGELOG.md` as release notes, and creates the release. Tag only commits where the manifests and changelog already agree. Locally, `RELEASE_TAG=vX.Y.Z python3 ci-validate.py` rehearses the tag check.
