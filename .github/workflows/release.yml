@@ -26,7 +26,8 @@ jobs:
         run: |
           awk -v tag="$TAG" '
             /^## v/ { if (found) exit; found = ($2 == tag) ; next }
-            found { print }
+            found && !started && /^[[:space:]]*$/ { next }
+            found { started = 1; print }
           ' CHANGELOG.md > release-notes.md
           if [ ! -s release-notes.md ]; then
             echo "No CHANGELOG.md section found for $TAG" >&2
