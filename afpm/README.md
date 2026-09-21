@@ -27,7 +27,7 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | `/start-product`     | Bootstrap `product/overview.md`: mode, context, sponsor (internal), ranked and tagged unverified beliefs |
 | `/frame-opportunity` | Frame a problem for a segment — signals, beliefs, research agenda — before any solution |
 | `/research-market`   | Secondary research/benchmarking, every claim provenance-tagged |
-| `/generate-personas` | Generate a diverse set of synthetic personas for your product |
+| `/generate-personas` | Generate a diverse set of synthetic personas — typed `primary`/`secondary`/`tertiary`/`negative`, mix on request or proposed |
 | `/interview-persona` | Interview a persona — exploration or validation mode          |
 | `/extract-insights`  | Extract actionable insights from transcripts (synthetic/real) |
 | `/design-interview`  | Design an interview guide + recruitment plan (survey opt-ins first) for real-user research |
@@ -50,7 +50,7 @@ Model-invoked — the agent loads them automatically when the topic matches.
 | ---------------------- | ----------------------------------------------------------------- |
 | `opportunity-framing`  | Opportunity vs. solution vs. outcome, signals vs. proof, research agenda, the OST as files |
 | `secondary-research`   | Provenance discipline, source hierarchy, lanes, belief mapping    |
-| `synthetic-personas`   | Archetype principles, persona structure, diversity requirements   |
+| `synthetic-personas`   | Archetype principles, persona structure, the four persona types, diversity requirements |
 | `synthetic-interviews` | In-character interview roleplay; exploration vs. validation modes |
 | `insight-extraction`   | Focus areas, grounding rules, insight quality bar                 |
 | `interview-guides`     | Discussion-guide design: goals → questions, funnel, non-leading; pretesting |
@@ -68,7 +68,7 @@ Artifacts live in your repo:
 product/
 ├── overview.md          # product context, sponsor (internal), tagged + ranked belief registry
 ├── corrections.md       # log of human corrections to AI proposals (kept by /review-evidence)
-├── personas/            # one file per persona (synthetic or derived)
+├── personas/            # one file per persona (synthetic or derived), each with a `type:` — primary / secondary / tertiary / negative
 ├── interviews/          # transcripts, synthetic and real
 ├── interview-guides/    # guides for real-user interviews
 ├── surveys/             # survey questionnaires

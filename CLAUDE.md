@@ -82,6 +82,8 @@ Every artifact except `overview.md`, `corrections.md`, personas, and hypotheses 
 
 Artifacts that can come from synthetic or real sources declare it in their header: interview transcripts and insights carry `source: synthetic | real | survey`; personas carry `source: derived` when built bottom-up from real evidence (`/derive-personas`) — synthetic and derived personas share `product/personas/`.
 
+**Persona type.** Every persona carries a `type:` field right after its role — `primary` (suffers the problem, uses the product; the design target), `secondary` (uses it with different needs or occasionally), `tertiary` (does not use it but decides, pays, approves, or is affected), or `negative` (explicitly not a target user; a scope decision, not a judgment) — four fixed English tokens like `source:` values, no fifth type, no synonyms. Primary/secondary evidence informs value beliefs, tertiary informs viability, negative bounds the scope. `/generate-personas` takes the mix explicitly or proposes one (never a set without a primary and a negative); `/derive-personas` assigns the type from evidence and proposes changes to what synthetic personas assumed; the type travels down the loop (interview transcript header, critique-panel composition, opportunity-brief persona list). A persona without `type:` (pre-field) is read normally and the skill that touches it offers to complete it. The type is never a discard criterion — personas are discarded only for not belonging to the product, and at the opportunity level only by relation to the problem. Documented in `synthetic-personas`.
+
 Workflow skills create these directories on first use. If the repo has an existing layout, skills adapt to it rather than forcing this one.
 
 ## Local Development & Testing

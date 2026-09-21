@@ -24,6 +24,12 @@ product/specs/ → product/exposure-plans/
 
 **The opportunity level is optional; skipping it is a decision, never an omission.** A team may take a decided feature straight to `/clarify-idea`. When it does, the idea brief says so — `opportunity: none (declared)` — and the belief the opportunity would have carried ("the problem X exists for Y") is registered explicitly as a `[feature: {slug}] [value]` belief, so the skipped level leaves a visible trace.
 
+## Personas and the problem
+
+Persona **type** (`primary | secondary | tertiary | negative`, from the `synthetic-personas` skill) and **suffering this problem** are independent dimensions. A `tertiary` persona may not suffer the problem and still be the one who answers the opportunity's viability belief — they pay for it, approve it, or block it. A `primary` persona of the product may have nothing to do with this particular opportunity. So the brief lists every persona with both: its type and whether it suffers the problem, and names the persona that is missing when nobody in the set suffers it.
+
+**The filter at the opportunity level is relation to the problem, never type.** The type never rules a persona out of an opportunity; it only says which belief their evidence can inform (value for `primary`/`secondary`, viability for `tertiary`, scope for `negative`).
+
 ## Opportunity vs. solution vs. outcome
 
 | It is…            | Sounds like                                     | Tell                                                   |
@@ -80,7 +86,8 @@ personas: {slugs from product/personas/, or "none yet"}
 {One sentence: the problem, the segment, why now.}
 
 ## Segment and personas
-{Which personas suffer it, which don't, which persona is missing.}
+- {persona name} ({type}) — suffers it / does not suffer it
+- Missing: {the persona that would suffer it, if none in the set does — or "none"}
 
 ## Signals
 | Signal | Provenance | Source |
@@ -117,3 +124,4 @@ Save to `product/opportunities/{YYYY-MM-DD-HHMM}-{slug}.md`; the slug after the 
 - Asking the user to imagine the solution while framing the problem
 - Framing forever: a research agenda with no decision and no date attached
 - Skipping the level silently — the idea brief must say `opportunity: none (declared)`
+- Filtering personas by type instead of by relation to the problem — a `tertiary` who does not suffer it can still answer the viability belief

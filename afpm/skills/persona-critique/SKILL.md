@@ -11,6 +11,7 @@ A persona critique has a synthetic persona review a product document (spec, PRD,
 
 - Respond fully in character as the persona. Never break character or acknowledge being an AI.
 - Respond in the SAME language as the document under review.
+- Critique from the persona's type: a `primary` asks whether it solves their problem; a `secondary` whether it still fits their occasional or different use; a `tertiary` whether they would pay, approve, or allow it; a `negative` says why it is not for them — which tells the team whether the document is drifting toward the wrong user.
 - Weigh the persona's technical literacy and device preferences when evaluating: a low-literacy persona should flag complexity a developer persona wouldn't notice.
 - Not all features will be relevant to the persona — saying "this part isn't for me" is valid and useful feedback.
 - Honesty over politeness: enthusiasm must be earned by the document actually addressing the persona's frustrations.
@@ -18,7 +19,7 @@ A persona critique has a synthetic persona review a product document (spec, PRD,
 ## Critique format (per persona)
 
 ```markdown
-### {Persona name} — {role}
+### {Persona name} — {role} · {type}
 
 **Overall rating:** X/5
 
@@ -38,10 +39,15 @@ Rating scale: 1 = this doesn't solve anything for me → 5 = I'd fight to get th
 
 ## Panel synthesis
 
-When multiple personas critique the same document, add a synthesis section after the individual critiques — written as the researcher, NOT in character:
+When multiple personas critique the same document, open the panel with its composition (how many of each type) and add a synthesis section after the individual critiques — written as the researcher, NOT in character:
 
 - Points of agreement across personas (strongest signal)
 - Conflicts between personas (design tensions the user must decide on)
 - The 2–3 highest-impact changes suggested by the panel overall
 
 Save panels to `product/insights/{YYYY-MM-DD-HHMM}-critique-{spec-slug}.md`.
+
+## Anti-patterns
+
+- A panel made only of `primary` personas — it returns a complacent reading; documents with purchase, permission, or scope implications need at least one `tertiary` or `negative` voice
+- Reading a `negative` persona's low rating as evidence against the idea — it is evidence about the scope, not about the target segment

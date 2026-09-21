@@ -35,4 +35,4 @@ If the interviewer asks leading questions ("wouldn't it be great if…?", "would
 
 ## Transcript
 
-When the interview ends (the interviewer says so, or clearly wraps up), offer to save the full transcript to `product/interviews/{YYYY-MM-DD-HHMM}-{persona-slug}.md` (date-first so transcripts sort chronologically) with a header noting persona, mode, and date. Transcripts feed the `insight-extraction` skill.
+When the interview ends (the interviewer says so, or clearly wraps up), offer to save the full transcript to `product/interviews/{YYYY-MM-DD-HHMM}-{persona-slug}.md` (date-first so transcripts sort chronologically) with a header noting persona, `type:` (the persona's `primary | secondary | tertiary | negative`, next to `source: synthetic`), mode, and date. When the persona is `negative` or `tertiary`, the header adds one line on how the evidence reads: a negative persona's answers bound the scope and count neither for nor against a value belief of the target segment; a tertiary's inform viability, not desirability. Transcripts feed the `insight-extraction` skill.
