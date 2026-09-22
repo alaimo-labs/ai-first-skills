@@ -32,7 +32,7 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | `/extract-insights`  | Extract actionable insights from transcripts (synthetic/real) |
 | `/design-interview`  | Design an interview guide + recruitment plan (survey opt-ins first) for real-user research |
 | `/test-interview-guide` | Pretest a guide against a persona and fix what breaks      |
-| `/design-survey`     | Design a survey questionnaire with an interview opt-in block, ready for any survey tool |
+| `/design-survey`     | Design a survey questionnaire with an interview opt-in block and a distribution plan (named channels, one link each, target n, dates), ready for any survey tool |
 | `/analyze-survey`    | Analyze survey results: quant summary, themes, insights       |
 | `/derive-personas`   | Derive evidence-based personas from real research patterns    |
 | `/map-frictions`     | Map cognitive frictions across a journey's steps (MFC)        |
@@ -71,7 +71,7 @@ product/
 ├── personas/            # one file per persona (synthetic or derived), each with a `type:` — primary / secondary / tertiary / negative
 ├── interviews/          # transcripts, synthetic and real
 ├── interview-guides/    # guides for real-user interviews
-├── surveys/             # survey questionnaires
+├── surveys/             # survey questionnaires, each with its distribution plan
 ├── insights/            # extracted insights, survey analyses & critique panels
 ├── research/            # secondary research & benchmarks
 ├── journeys/            # user journeys + cognitive friction maps

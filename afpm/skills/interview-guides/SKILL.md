@@ -56,8 +56,10 @@ ask for objections, not praise.
 ## Recruitment plan
 Where these participants are (channels, named concretely — survey opt-ins
 first when a survey exists, chosen by their answers, contradictors before
-confirmers), how they're screened (screener questions with disqualifiers),
-and how many interviews to run.
+confirmers; when that survey has a Distribution section, reference it as
+the upstream source instead of repeating its channels, and name own
+channels only for what it doesn't cover), how they're screened (screener
+questions with disqualifiers), and how many interviews to run.
 ```
 
 ## Quality bar
@@ -66,7 +68,7 @@ and how many interviews to run.
 - Fits the duration: ~1 main question plus probes per 5 minutes. A 30-minute guide with 20 questions is a survey read aloud.
 - The falsification note per goal is written down — interviewers hear what they hope for unless the guide says what "we were wrong" sounds like.
 - In validation mode, behavior questions come strictly before the stimulus.
-- The recruitment plan is concrete: named channels (not "social media"), survey opt-ins as the first source when they exist — prioritizing respondents whose answers contradict a belief — screeners with explicit disqualifiers, saturation over quota.
+- The recruitment plan is concrete: named channels (not "social media"), survey opt-ins as the first source when they exist — prioritizing respondents whose answers contradict a belief, and referencing the survey's Distribution section rather than duplicating its channels — screeners with explicit disqualifiers, saturation over quota.
 
 ## Pretesting the guide
 

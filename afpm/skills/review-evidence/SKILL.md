@@ -32,6 +32,7 @@ Input: $ARGUMENTS
    - Beliefs with no evidence yet, from any source.
    - Opportunity briefs in `product/opportunities/` whose research agenda has no artifact against it yet — a framed problem nobody started researching — and, once an opportunity's beliefs are contradicted, idea briefs that still hang from it.
    - `source: synthetic` insights never verified against real users.
+   - Surveys in `product/surveys/` whose first-review date has passed with no analysis in `product/insights/` (a `source: survey` file naming the design) — responses nobody read; and surveys with no Distribution section at all, flagged as "no distribution plan".
    - Specs in `product/specs/` with no matching critique (`{YYYY-MM-DD-HHMM}-critique-{spec-slug}.md` in `product/insights/`).
    - If `product/hypotheses/` exists: hypothesis files whose Outcome section is still empty — an experiment exposed but never scored.
 

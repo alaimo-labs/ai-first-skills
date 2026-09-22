@@ -33,6 +33,16 @@ Same chain as interviews: 2–4 learning goals (from assumptions, synthetic insi
 - General before specific; behavior before opinion; demographics last.
 - Never make an opinion question required — forced answers are noise.
 
+### Distributing the survey
+
+A questionnaire without a distribution plan is a document, not an instrument. The plan lives in the same file, in the **Distribution** section, and follows the same standard as the recruitment plan of the `interview-guides` skill:
+
+- **Named channels.** Own customer base, a named email list, a named community, a named LinkedIn group, a panel. Never "social media" or "my network".
+- **Who each channel reaches, and its bias.** Per channel: which segment or persona it reaches and whom it over- or under-represents. An own channel (customers, followers, the product's community) over-represents people who are already satisfied — say it in the table, don't discover it in the analysis. If only own channels are listed, add one that reaches whom they don't.
+- **One link per channel** — form copies, a URL parameter, or a hidden field, depending on the tool — so every response knows where it came from and the analysis can cut by channel.
+- **A target n per segment that matters, not a total.** Below 30 per segment, results are directional. If the channels' summed reach cannot produce that n at a reasonable response rate, say so before publishing. Unknown reach stays `unknown` — never an invented number.
+- **Dates.** A first-review date always; the close may stay open ("open until target n"). Long windows are fine: a survey collecting responses while the team keeps working is normal.
+
 ### Questionnaire format
 
 ```markdown
@@ -54,13 +64,23 @@ Q1. {question} [type: single choice | likert-5 | open | …]
 R1. {disqualifier for the interview profile} → not a candidate if {answer}
 R2. Would you accept a 30-minute conversation about this? [yes / no]
 R3. If yes, how can we reach you? [open, optional]
+
+## Distribution
+| Channel | Who it reaches | Approx. reach | Link |
+|---|---|---|---|
+| {named channel} | {which segment / persona, and whom it over- or under-represents} | {n people it reaches, or unknown} | {one link per channel} |
+
+- **Target n:** {per segment that matters; below 30 per segment, results are directional}
+- **First review:** {date}
+- **Closes:** {date, or "open until target n"}
 ```
 
-The `> Goal:` annotations are for the team, not the respondent — strip them when pasting into the survey tool.
+The `> Goal:` annotations are for the team, not the respondent — strip them when pasting into the survey tool. The Distribution section is for the team too: it stays in the file and never goes into the tool. A survey file without it (written before the section existed) is read normally; the analysis then asks for the channel.
 
 ## Analyzing the results
 
-- **Report the denominator first.** n, response rate if known, and how respondents were recruited — every claim inherits these limits. With n < 30 per segment, report patterns as directional, never as percentages with confidence.
+- **Report the denominator first.** n, response rate if known, and how respondents were recruited — read from the design file's Distribution section when it has one (channels, reach, target n), asked otherwise — every claim inherits these limits. With reach known and the channel in the export, report the response rate per channel. With n < 30 per segment, report patterns as directional, never as percentages with confidence.
+- **Cut by channel when the export carries it.** A strong difference between channels is a finding about the sample before it is a finding about the segment — say so, and weigh the channel that over-represents the satisfied accordingly.
 - **Closed questions:** distribution per question, then cut by the segments that matter (from screening/demographic questions). A difference between segments is the finding; an overall average usually hides it.
 - **Open-ends:** code them like interview data — group responses into recurring themes, count mentions per theme, keep 1–2 verbatim quotes per theme as evidence.
 - **Map back to goals.** Structure the analysis by learning goal, not by question order: what did we believe, what did the data show, what's the decision.
@@ -76,3 +96,6 @@ Insights extracted from survey data follow the same quality bar as the `insight-
 - Scale direction flipping mid-survey (respondents on autopilot answer the pattern, not the question)
 - "Would you pay for X?" as a validation question — stated intent inflates wildly; ask about current behavior and spend instead
 - Analyzing question by question instead of goal by goal
+- A survey with no named channel — "we'll share it" is not a distribution plan
+- A survey that goes out through one own channel only and is analyzed as if it represented the segment
+- One link for every channel — responses that don't know where they came from can't be cut by channel

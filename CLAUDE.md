@@ -59,7 +59,7 @@ product/
 ├── personas/{slug}.md   <- one file per persona
 ├── interviews/          <- interview transcripts, synthetic and real ({YYYY-MM-DD-HHMM}-{persona-or-interviewee-slug}.md)
 ├── interview-guides/    <- guides for real-user interviews ({YYYY-MM-DD-HHMM}-{slug}.md)
-├── surveys/             <- survey questionnaires ({YYYY-MM-DD-HHMM}-{slug}.md; results analyses go to insights/)
+├── surveys/             <- survey questionnaires ({YYYY-MM-DD-HHMM}-{slug}.md; each carries a Distribution section — named channels, reach, one link per channel, target n, first-review and close dates; results analyses go to insights/)
 ├── insights/            <- extracted insights ({YYYY-MM-DD-HHMM}-{slug}.md; critiques: {YYYY-MM-DD-HHMM}-critique-{spec-slug}.md)
 ├── research/            <- secondary research / benchmarks ({YYYY-MM-DD-HHMM}-{slug}.md; source: secondary — market evidence, kept apart from user evidence in insights/)
 ├── journeys/            <- user journeys + cognitive friction maps ({YYYY-MM-DD-HHMM}-{slug}.md)
