@@ -45,6 +45,12 @@ Traces to: {insight title or file}
 We believe {users} will {behavior} because {motivation}.
 We're wrong if {observable signal}.
 
+## Alternatives considered
+{Only when the idea comes from `/explore-solutions`. One link and one line per alternative — the comparison lives in the solutions file, not here.}
+Explored in: product/solutions/{file}
+- {alternative} — discarded: {reason}
+- {alternative} — parked: {reason}
+
 ## Assumptions
 {References to `product/overview.md` — the single belief registry; the spec keeps no separate list.}
 - [feature: {slug}] [{risk}] {belief as registered} {— owner: {role}, only when it differs from the default}
@@ -70,6 +76,7 @@ The owner derives from the risk; write it down only when the real owner differs 
 - **Critical stories only: 3–5.** This is discovery, not a backlog. Each story should be INVEST-shaped — independent, negotiable, valuable, estimable, small, testable — with the persona's real name as the role, never a generic "user."
 - **Acceptance criteria are observable: 3–6 per story.** Each one answers yes/no by looking at the product — no "works well", no "is intuitive". Include at least one edge case. Well-written criteria double as validation signals for the exposure plan later.
 - **Hypothesis is falsifiable.** The "we're wrong if" clause names a signal you could actually observe. This block is what `exposure-plans` decomposes — a spec without it can't be sliced.
+- **Alternatives are linked, not re-argued.** When the idea descends from a solutions file, the spec says which alternatives lost and why in one line each and links the file; it never rewrites the comparison. A spec whose idea skipped the exploration omits the section — the idea brief already records `solutions explored: no (declared)`.
 - **Accessible.** Short sentences, no jargon a newcomer to the product would trip on.
 
 ## Location

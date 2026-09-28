@@ -4,7 +4,7 @@ Agent skills for discovery and validation with synthetic users. Companion plugin
 
 ## Overview
 
-This plugin gives your coding agent a product-discovery toolkit: frame opportunities before choosing solutions, create synthetic personas, interview them, extract insights, run critique panels over your specs, and slice features into exposure plans. It also bridges to real research: design interview guides and surveys, analyze the results, and derive evidence-based personas from the patterns. All artifacts are plain markdown files in your repo under `product/` — no external services.
+This plugin gives your coding agent a product-discovery toolkit: frame opportunities before choosing solutions, compare solution alternatives against the evidence, create synthetic personas, interview them, extract insights, run critique panels over your specs, and slice features into exposure plans. It also bridges to real research: design interview guides and surveys, analyze the results, and derive evidence-based personas from the patterns. All artifacts are plain markdown files in your repo under `product/` — no external services.
 
 Content is written in English; all deliverables come out in the language you work in.
 
@@ -36,7 +36,8 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | `/analyze-survey`    | Analyze survey results: quant summary, themes, insights       |
 | `/derive-personas`   | Derive evidence-based personas from real research patterns    |
 | `/map-frictions`     | Map cognitive frictions across a journey's steps (MFC)        |
-| `/clarify-idea`      | Sharpen a fuzzy idea via one-question-at-a-time brainstorming; names its parent opportunity or declares none |
+| `/explore-solutions` | Starts from an opportunity: 3–5 alternatives with different mechanisms vs. the current workaround, judged desirable / feasible / viable against the evidence; you choose, it ends with the value proposition of the chosen one |
+| `/clarify-idea`      | Starts from one idea already chosen: sharpen it via one-question-at-a-time brainstorming; names its parent opportunity (and the exploration it came from) or declares none |
 | `/write-spec`        | Draft an evidence-grounded spec: journey, stories, criteria   |
 | `/critique-spec`     | Persona panel critiques a spec/PRD, with synthesis            |
 | `/slice-feature`     | Turn a spec's hypothesis into an Exposure Plan                |
@@ -49,6 +50,7 @@ Model-invoked — the agent loads them automatically when the topic matches.
 | Skill                  | Knowledge it carries                                              |
 | ---------------------- | ----------------------------------------------------------------- |
 | `opportunity-framing`  | Opportunity vs. solution vs. outcome, signals vs. proof, research agenda, the OST as files |
+| `solution-exploration` | Real alternative vs. variation, the workaround as baseline, the desirable / feasible / viable filter and who owns each judgment, the value proposition, the solutions file |
 | `secondary-research`   | Provenance discipline, source hierarchy, lanes, belief mapping    |
 | `synthetic-personas`   | Archetype principles, persona structure, the four persona types, diversity requirements |
 | `synthetic-interviews` | In-character interview roleplay; exploration vs. validation modes |
@@ -76,14 +78,15 @@ product/
 ├── research/            # secondary research & benchmarks
 ├── journeys/            # user journeys + cognitive friction maps
 ├── opportunities/       # opportunity briefs: problem + segment + signals + research agenda, no solution yet
-├── ideas/               # clarified idea briefs (each names its parent opportunity, or `none (declared)`)
+├── solutions/           # alternatives compared for one opportunity, and the one chosen (with its value proposition)
+├── ideas/               # clarified idea briefs (each names its parent opportunity, or `none (declared)`, and the exploration it came from)
 ├── specs/               # feature specs
 └── exposure-plans/      # exposure plans
 ```
 
 `overview.md` is the **single belief registry**: every unverified belief lives there — never in per-opportunity, per-idea, or per-spec lists — tagged by scope (`[product]`, `[opportunity: {slug}]`, or `[feature: {slug}]`) and risk (`[value]` / `[usability]` / `[feasibility]` / `[viability]`), ranked by impact × uncertainty. Internal products also record their **sponsor**: who funds the product and what they need to see to keep funding it.
 
-The three scopes mirror an **Opportunity Solution Tree**: `overview.md` (outcome + product beliefs) → `opportunities/` (a problem for a segment, framed by `/frame-opportunity`) → `ideas/` (candidate solutions, each hanging from an opportunity) → `specs/` → `exposure-plans/`. The opportunity level is optional — you can take a decided feature straight to `/clarify-idea` — but skipping it is a declared decision: the idea brief records `opportunity: none (declared)` and registers the problem it assumes as a belief.
+The three scopes mirror an **Opportunity Solution Tree**: `overview.md` (outcome + product beliefs) → `opportunities/` (a problem for a segment, framed by `/frame-opportunity`) → `solutions/` (3–5 genuinely different alternatives for that problem, compared against the evidence by `/explore-solutions`; you choose, it recommends) → `ideas/` (the chosen alternative, clarified by `/clarify-idea`) → `specs/` → `exposure-plans/`. Both middle levels are optional — you can take a decided feature straight to `/clarify-idea` — but skipping them is a declared decision: the idea brief records `opportunity: none (declared)` and registers the problem it assumes as a belief, or `solutions explored: no (declared)` when the problem was framed but the idea never competed with alternatives.
 
 As evidence arrives, beliefs in `overview.md` get a status appended on the belief's own line — `— confirmed/contradicted/weakened by [file] (date)` (keywords stay in English, like `source:` values; no status = still unverified). Only evidence from real users confirms; synthetic evidence just makes a belief promising. `/review-evidence`, `/extract-insights`, and `/analyze-survey` propose these annotations — you approve before anything is written.
 

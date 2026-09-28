@@ -13,11 +13,11 @@ Input: $ARGUMENTS
 
 ## Workflow
 
-1. **Resolve the bet.** If the arguments name a feature idea or an insight file, start there. Otherwise read the recent files in `product/insights/`, propose the insight that looks highest-impact as the one to bet on, and confirm with the user before proceeding.
+1. **Resolve the bet.** If the arguments name a feature idea, an idea brief in `product/ideas/`, or an insight file, start there. Otherwise read the recent files in `product/insights/`, propose the insight that looks highest-impact as the one to bet on, and confirm with the user before proceeding.
 
-2. **Load the evidence.** Read `product/overview.md` (belief registry included — beliefs already registered for this feature or the product bear on the bet), the personas in `product/personas/` relevant to the chosen insight, the interview transcripts the insight cites, and any market research in `product/research/` that bears on the bet. Identify the primary persona for the journey and confirm the choice if it isn't obvious.
+2. **Load the evidence.** Read `product/overview.md` (belief registry included — beliefs already registered for this feature or the product bear on the bet), the personas in `product/personas/` relevant to the chosen insight, the interview transcripts the insight cites, and any market research in `product/research/` that bears on the bet. When the idea brief carries `solutions explored: {file}`, read that file in `product/solutions/` — the comparison and the value proposition are already settled; the spec links them, never rewrites them. Identify the primary persona for the journey and confirm the choice if it isn't obvious.
 
-3. **Draft** per the `feature-specs` skill: problem with cited evidence, user journey from the primary persona's point of view, 3–5 critical user stories with observable acceptance criteria, the falsifiable hypothesis block, and assumptions. Where the evidence is thin, the claim becomes an assumption — never invent quotes or journey steps.
+3. **Draft** per the `feature-specs` skill: problem with cited evidence, user journey from the primary persona's point of view, 3–5 critical user stories with observable acceptance criteria, the falsifiable hypothesis block, and assumptions. When the idea comes from an exploration, add the short **Alternatives considered** section: a link to the solutions file and one line per discarded alternative with its reason — no re-evaluation. Where the evidence is thin, the claim becomes an assumption — never invent quotes or journey steps.
 
 4. **Present and iterate.** Show the draft; walk the user through the journey and the hypothesis in particular (those carry the most judgment). Adjust until they own it — the spec is their bet, not the agent's.
 

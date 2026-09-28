@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # /frame-opportunity
 
-Help the user understand a problem space before deciding what to build, following the `opportunity-framing` skill. The agent interrogates; the user decides. **This skill never asks what the solution looks like** — that question belongs to `/clarify-idea`, later.
+Help the user understand a problem space before deciding what to build, following the `opportunity-framing` skill. The agent interrogates; the user decides. **This skill never asks what the solution looks like** — that question belongs to `/explore-solutions` and `/clarify-idea`, later.
 
 Input: $ARGUMENTS
 
@@ -27,13 +27,13 @@ Input: $ARGUMENTS
 
    If the user drifts into solutions, park the idea under candidate ideas and return to the problem. Never ask "what would it look like?", "which features?", or "how would it work?".
 
-4. **Synthesize** into an opportunity brief per the `opportunity-framing` skill's format: statement (problem + segment + why now), segment and personas — each by name, with its type and whether it suffers the problem — with the missing persona if any, signals table with provenance, business outcome, constraints, beliefs referenced from the registry, the **research agenda** (per belief: the cheapest instrument that resolves it, the decision it unlocks, by when — this section is the skill's real payoff), and candidate ideas parked along the way, explicitly marked *not evaluated*. **Show the full brief in the conversation** before asking to save it.
+4. **Synthesize** into an opportunity brief per the `opportunity-framing` skill's format: statement (problem + segment + why now), segment and personas — each by name, with its type and whether it suffers the problem — with the missing persona if any, signals table with provenance, business outcome, constraints, beliefs referenced from the registry, the **research agenda** (per belief: the cheapest instrument that resolves it, the decision it unlocks, by when — this section is the skill's real payoff), and candidate ideas parked along the way, explicitly marked *not evaluated* — they are the starting set of `/explore-solutions`, not a shortlist. **Show the full brief in the conversation** before asking to save it.
 
 5. **Register the beliefs in the overview — the brief keeps no list of its own.** `product/overview.md` is the single belief registry. For each belief: if it matches one already registered (product-wide or from another opportunity), the brief references that line; if new, propose appending it to the unverified beliefs as `[opportunity: {slug}] [value|viability] {belief}` — slug = the brief's slug; `[usability]`/`[feasibility]` only when one bounds the whole opportunity, per the knowledge skill — ranked among the existing beliefs by impact × uncertainty. Write nothing to the overview without the user's approval. No `product/overview.md` yet → suggest `/start-product` in one line and keep the beliefs in the brief, marked as pending registration.
 
 6. **Save** to `product/opportunities/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date) once the user has seen the brief and agreed. Discarded opportunities are worth saving too, with `status: discarded` and *why* — the next person who brings the same problem finds the reasoning.
 
-7. **Close with the next step in one line, following the research agenda:** `/research-market` on this opportunity first (secondary is cheap and narrows the agenda); then `/design-survey` and `/design-interview` for what the market can't answer — interviews recruited among the survey's opt-ins; `/clarify-idea` only once the problem holds, pointing at this opportunity so the idea inherits its beliefs.
+7. **Close with the next step in one line, following the research agenda:** `/research-market` on this opportunity first (secondary is cheap and narrows the agenda); then `/design-survey` and `/design-interview` for what the market can't answer — interviews recruited among the survey's opt-ins; `/explore-solutions` on this opportunity once the problem holds — it takes the parked candidate ideas, adds alternatives with different mechanisms, and compares them against the evidence, so the one that reaches `/clarify-idea` has competed with something.
 
 ## Language
 
