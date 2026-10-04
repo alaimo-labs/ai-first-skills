@@ -33,7 +33,7 @@ Input: $ARGUMENTS
 
 6. **Save** to `product/opportunities/{YYYY-MM-DD-HHMM}-{slug}.md` (timestamp = creation date) once the user has seen the brief and agreed. Discarded opportunities are worth saving too, with `status: discarded` and *why* — the next person who brings the same problem finds the reasoning.
 
-7. **Close with the next step in one line, following the research agenda:** `/research-market` on this opportunity first (secondary is cheap and narrows the agenda); then `/design-survey` and `/design-interview` for what the market can't answer — interviews recruited among the survey's opt-ins; `/explore-solutions` on this opportunity once the problem holds — it takes the parked candidate ideas, adds alternatives with different mechanisms, and compares them against the evidence, so the one that reaches `/clarify-idea` has competed with something.
+7. **Close with the next step in one line, following the research agenda:** `/research-market` on this opportunity first (secondary is cheap and narrows the agenda); then `/design-survey` and `/design-interview` for what the market can't answer — interviews recruited among the survey's opt-ins; `/explore-solutions` on this opportunity once the problem holds — it takes the parked candidate ideas, adds alternatives with different mechanisms, and compares them against the evidence, so the ones that reach `/design-solution-tests` have competed with something before they are tested.
 
 ## Language
 

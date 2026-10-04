@@ -33,6 +33,10 @@ Input: $ARGUMENTS
    - Opportunity briefs in `product/opportunities/` whose research agenda has no artifact against it yet — a framed problem nobody started researching — and, once an opportunity's beliefs are contradicted, idea briefs that still hang from it.
    - Opportunities whose `[value]` beliefs already carry `survey` or `real` evidence and have no solutions file in `product/solutions/` — a problem that holds and nobody compared ways to solve it (`/explore-solutions`).
    - Idea briefs in `product/ideas/` with a parent opportunity that neither name a solutions file nor declare `solutions explored: no (declared)` — an idea that skipped the comparison silently.
+   - Solutions files with `status: testing-several` (or `chosen`) and no tests file in `product/tests/` naming them — alternatives chosen for testing that nobody designed a test for (`/design-solution-tests`).
+   - Tests files in `product/tests/` with `status: designed` whose tests need material (Material needed is not `none needed`) and have none — tests that cannot run yet (`/build-solution-test`).
+   - Tests files still `designed` or `ready` whose duration or time box has elapsed with no Results section — tests run, or never run, and never analyzed (`/analyze-solution-tests`).
+   - Specs in `product/specs/` written over an alternative from a solutions file whose riskiest belief was neither tested (no tests file, or `not run`) nor declared as untested under *Tested before spec* — a spec that skipped the test silently.
    - `source: synthetic` insights never verified against real users.
    - Surveys in `product/surveys/` whose first-review date has passed with no analysis in `product/insights/` (a `source: survey` file naming the design) — responses nobody read; and surveys with no Distribution section at all, flagged as "no distribution plan".
    - Specs in `product/specs/` with no matching critique (`{YYYY-MM-DD-HHMM}-critique-{spec-slug}.md` in `product/insights/`).
@@ -51,7 +55,7 @@ Input: $ARGUMENTS
 
    If there were no corrections, don't invent any — record the review anyway (a dated entry noting no corrections), so the next `/review-evidence` knows where the last one ended.
 
-6. **Close with a one-screen summary:** belief status at a glance (confirmed / contradicted / weakened / promising / untouched), the drift report prioritized by what most blocks learning, and the suggested next step in one line — name the workflow to run on the top pending item: `/design-interview` or `/design-survey` to take a belief or a synthetic insight to real users, `/critique-spec` for a spec that skipped its panel, `/analyze-survey` for unanalyzed results, `/explore-solutions` for an opportunity that holds and has no alternatives compared. (Name these explicitly — user-invoked workflows never auto-load, so their names are not otherwise in context.)
+6. **Close with a one-screen summary:** belief status at a glance (confirmed / contradicted / weakened / promising / untouched), the drift report prioritized by what most blocks learning, and the suggested next step in one line — name the workflow to run on the top pending item: `/design-interview` or `/design-survey` to take a belief or a synthetic insight to real users, `/critique-spec` for a spec that skipped its panel, `/analyze-survey` for unanalyzed results, `/explore-solutions` for an opportunity that holds and has no alternatives compared, `/design-solution-tests` for alternatives chosen for testing with no tests file, `/build-solution-test` for a designed test still waiting for its material, `/analyze-solution-tests` for a test whose time box elapsed without analysis. (Name these explicitly — user-invoked workflows never auto-load, so their names are not otherwise in context.)
 
 ## Language
 

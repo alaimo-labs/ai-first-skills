@@ -16,8 +16,9 @@ Write the brief in the language of the conversation. The belief tags, the proven
 ```
 product/overview.md          outcome + [product] beliefs
 product/opportunities/       one problem for one segment, with signals  → [opportunity: {slug}] beliefs
-product/solutions/           alternatives compared for one opportunity, and the one chosen (see `solution-exploration`)
-product/ideas/               the chosen alternative, clarified — each with a parent opportunity (optional, declared) → [feature: {slug}] beliefs
+product/solutions/           alternatives compared for one opportunity, and the ones chosen for testing (see `solution-exploration`)
+product/tests/               solution tests: design, results, decision per alternative (see `solution-testing`)
+product/ideas/               clarified idea briefs — the path without exploration, each with a parent opportunity (optional, declared) → [feature: {slug}] beliefs
 product/specs/ → product/exposure-plans/
 ```
 
@@ -39,7 +40,7 @@ Persona **type** (`primary | secondary | tertiary | negative`, from the `synthet
 | An **opportunity**| "Team leads lose the decisions made in meetings" | A segment and a behavior or cost; several solutions could address it. |
 | A **solution**    | "A better whiteboard", "automatic meeting notes" | It can be built. Only one of many answers to the problem. |
 
-The tell for a solution in disguise: it can be built. An opportunity can only be understood. When an opportunity arrives as a solution, park the solution as a *candidate idea* and dig underneath: "what would have to be true about these people for a better whiteboard to matter?" One opportunity may later spawn several ideas — whiteboard, live notes, live agenda, quick voting — and that is the point of framing it first: `/explore-solutions` puts them side by side against the evidence before any one of them goes to `/clarify-idea`.
+The tell for a solution in disguise: it can be built. An opportunity can only be understood. When an opportunity arrives as a solution, park the solution as a *candidate idea* and dig underneath: "what would have to be true about these people for a better whiteboard to matter?" One opportunity may later spawn several ideas — whiteboard, live notes, live agenda, quick voting — and that is the point of framing it first: `/explore-solutions` puts them side by side against the evidence, and `/design-solution-tests` tests the ones chosen before any one of them is specified.
 
 ## Signals vs. proof
 

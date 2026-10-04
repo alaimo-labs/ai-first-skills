@@ -51,6 +51,14 @@ Explored in: product/solutions/{file}
 - {alternative} — discarded: {reason}
 - {alternative} — parked: {reason}
 
+## Tested before spec
+{Only when the alternative has a tests file. One link and one line per test — the analysis lives in the tests file, not here. A spec decision that changed what a test covered says so.}
+Tested in: product/tests/{file}
+- T1 {test name} — passed (real, n=…) · {belief}
+- T2 {test name} — failed (synthetic, rehearsal) · {belief}
+- {or} riskiest belief not tested (declared)
+- {if applicable} T{n} — result no longer applies: {what this spec changed}
+
 ## Assumptions
 {References to `product/overview.md` — the single belief registry; the spec keeps no separate list.}
 - [feature: {slug}] [{risk}] {belief as registered} {— owner: {role}, only when it differs from the default}
@@ -77,6 +85,8 @@ The owner derives from the risk; write it down only when the real owner differs 
 - **Acceptance criteria are observable: 3–6 per story.** Each one answers yes/no by looking at the product — no "works well", no "is intuitive". Include at least one edge case. Well-written criteria double as validation signals for the exposure plan later.
 - **Hypothesis is falsifiable.** The "we're wrong if" clause names a signal you could actually observe. This block is what `exposure-plans` decomposes — a spec without it can't be sliced.
 - **Alternatives are linked, not re-argued.** When the idea descends from a solutions file, the spec says which alternatives lost and why in one line each and links the file; it never rewrites the comparison. A spec whose idea skipped the exploration omits the section — the idea brief already records `solutions explored: no (declared)`.
+- **What was tested is fixed.** When the alternative has a tests file (see the `solution-testing` skill), the spec links it under *Tested before spec* with one line per test — result and provenance — and keeps the tested version: the mechanism, who does what, the behavior measured, the segment. A spec decision that changes one of them invalidates that test's result; the spec says so in the same section (`result no longer applies`), and the belief is unverified again for the new version. An alternative that came from an exploration and was never tested declares it: `riskiest belief not tested (declared)`.
+- **The spec is written from a tested alternative without an idea brief.** When the bet is a solutions file plus its analyzed tests file, the opportunity, the persona, the value proposition, what it replaces, and the smallest version come from those files by reference; the spec asks only the detail decisions that remain.
 - **Accessible.** Short sentences, no jargon a newcomer to the product would trip on.
 
 ## Location

@@ -7,23 +7,24 @@ description: How to explore and compare solution alternatives for one opportunit
 
 An opportunity is a problem for a segment; a solution is one of many answers to it. **Solution exploration** is the step between them: open a set of genuinely different answers, evaluate each against the evidence, and let the user choose which one goes on to be clarified and specified. It is the divergent level of the Opportunity Solution Tree — several solutions hang from one opportunity, and the first one that shows up is rarely the best.
 
-The skill that runs it is `/explore-solutions`; it feeds `/clarify-idea`, which starts from the alternative that won. The exploration is not a spec and not an idea brief: it ends with a decision and the value proposition of what was chosen.
+The skill that runs it is `/explore-solutions`; it feeds `/design-solution-tests`, which tests the riskiest belief of each alternative that came out before anything is built (see the `solution-testing` skill). **Chosen means chosen for testing**, not for building: the exploration is not a spec and not a test design; it ends with a decision, the value proposition of what was chosen, and one line per alternative under test saying which belief has to be tested and why.
 
 ## Language
 
-Write the solutions file in the language of the conversation. Filter ratings, provenance labels, `status:` values, and belief tags are fixed English tokens, like `source:` values.
+Write the solutions file in the language of the conversation. Filter ratings, the note `pain evidenced, relief not tested`, provenance labels, `status:` values, outcome values (`chosen`, `discarded`, `parked`), and belief tags are fixed English tokens, like `source:` values.
 
 ## The tree as files
 
 ```
 product/overview.md          outcome + [product] beliefs
 product/opportunities/       one problem for one segment, with signals  → [opportunity: {slug}] beliefs
-product/solutions/           alternatives compared for one opportunity, and the one chosen → proposes [feature: {slug}] beliefs
-product/ideas/               the chosen alternative, clarified → [feature: {slug}] beliefs
+product/solutions/           alternatives compared for one opportunity, and the ones chosen for testing → proposes [feature: {slug}] beliefs
+product/tests/               solution tests: design, results, decision per alternative (see `solution-testing`)
+product/ideas/               clarified idea briefs — the path without exploration → [feature: {slug}] beliefs
 product/specs/ → product/exposure-plans/
 ```
 
-One solutions file per exploration, named after the opportunity. An idea brief that descends from one inherits its comparison and value proposition by reference; the spec links it under *Alternatives considered*. Skipping the exploration is allowed and declared: the idea brief records `solutions explored: no (declared)`.
+One solutions file per exploration, named after the opportunity. The tests file that descends from it (`product/tests/`) tests the riskiest belief of each alternative under test; the spec is written from the solutions file and the analyzed tests file, and links them under *Alternatives considered* and *Tested before spec*. `/clarify-idea` is the path **without** exploration — an idea that arrives already decided; an idea brief written over an explored alternative inherits its comparison and value proposition by reference and declares whether the alternative was tested. Skipping the exploration is allowed and declared: the idea brief records `solutions explored: no (declared)`.
 
 ## A real alternative vs. a variation
 
@@ -45,13 +46,13 @@ Each alternative is judged on three questions. Each judgment is one of `strong |
 
 | Filter        | The question                                                                 | What counts as evidence                                                                 | Who owns the judgment |
 | ------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------- |
-| **Desirable** | Does it relieve the pain the evidence shows, for the persona that suffers it, better than the workaround? | Insights and survey analyses (`real` / `survey` first), interviews, research on alternatives; synthetic evidence makes it promising, never strong | PM — defends it |
+| **Desirable** | Does it relieve the pain the evidence shows, for the persona that suffers it, better than the workaround? | **Solution evidence**: someone reacted to this solution or to one very like it (a test in `product/tests/`, a validation interview with real users, usage of a close substitute), `real` / `survey` first. **Problem evidence** — insights and survey analyses about the pain — supports `mixed` at most, with the note `pain evidenced, relief not tested`; synthetic evidence makes it promising, never strong | PM — defends it |
 | **Feasible**  | Can it be built or put in place within the brief's constraints?             | Facts in the overview's what-we-know section, constraints in the brief, something tech already said | Tech — the PM consults; without evidence the cell reads `to check with tech`, never a guess |
 | **Viable**    | Does it move the business outcome the opportunity names?                    | Commercial: revenue, retention, upgrade signals, pricing research; internal: the sponsor's metric or a cost avoided, in the sponsor's words | PM — defends it, with the sponsor as the tertiary source |
 
-**Usability is not a filter here.** It belongs to the spec and the prototype, where there is something to try. It enters the comparison only when an alternative depends on a behavior the evidence says these users will not adopt — then it is the riskiest belief, not a column.
+**Usability is not a filter here.** There is nothing to try yet; when the riskiest belief of an alternative is about usability, it is tested with a prototype in `/design-solution-tests`, before the spec. It enters the comparison only when an alternative depends on a behavior the evidence says these users will not adopt — then it is the riskiest belief, not a column.
 
-**Every alternative names its riskiest belief:** the one that, if false, kills it, stated so an instrument could prove it wrong. That belief is what the next step tests; the comparison table without it is a scorecard, not a decision aid.
+**Every alternative names its riskiest belief:** the one that, if false, kills it, stated so an instrument could prove it wrong. That belief is what `/design-solution-tests` tests next; the comparison table without it is a scorecard, not a decision aid.
 
 ## The value proposition of the chosen alternative
 
@@ -64,6 +65,10 @@ No canvas, no six boxes. Written against the persona that suffers the problem, i
 
 Then the beliefs the alternative carries, stated falsifiably, proposed to the registry as `[feature: {slug}] [risk]` — the opportunity's beliefs referenced from their registered line, never duplicated; beliefs of discarded alternatives never registered.
 
+## What has to be tested
+
+The file closes the decision with one line per alternative under test: which belief has to be tested and why it is the one that would kill it. Not the test itself — what is done, with whom, the signal, the threshold, and the decision rule are designed in `/design-solution-tests` and live in `product/tests/`; writing them here would design the test around the favorite before anyone looked at the evidence per belief. Once the tests exist, the frontmatter carries `tests: {file}`; once they are analyzed, each alternative gets its outcome (`chosen`, `discarded`, `parked`) with a link to the tests file, and desirability cells that now have solution evidence are revised with the new file and provenance.
+
 ## File format
 
 ```markdown
@@ -71,6 +76,7 @@ Then the beliefs the alternative carries, stated falsifiably, proposed to the re
 opportunity: {slug}
 status: chosen | testing-several | back-to-research
 chosen: {alternative slug(s), or none}
+tests: {product/tests/{file}, added by /design-solution-tests}
 ---
 
 # Solutions for: {opportunity title}
@@ -92,7 +98,11 @@ chosen: {alternative slug(s), or none}
 | A1 | strong (survey, n=…, {file}) | to check with tech | mixed (assumption) | … |
 
 ## Decision
-{What was chosen, by whom, why. The recommendation if it differed, and the reason for the difference (logged in corrections.md).}
+{What was chosen for testing, by whom, why. The recommendation if it differed, and the reason for the difference (logged in corrections.md).}
+
+## To test
+- A1 — {belief to test, quoted}: {why it is the one that kills it}. Designed in /design-solution-tests.
+- A2 — …
 
 ## Value proposition: {chosen alternative}
 - Pain relieved: …
@@ -108,9 +118,12 @@ chosen: {alternative slug(s), or none}
 ## Discarded or parked
 - A3 — discarded: {reason}
 - A4 — parked: {reason, and what would bring it back}
+
+## Outcome
+{Added by /analyze-solution-tests, per alternative under test: `chosen | discarded | parked` — {tests file}, result and provenance in one line.}
 ```
 
-Save to `product/solutions/{YYYY-MM-DD-HHMM}-{opportunity-slug}.md`. Three statuses: `chosen` (one alternative goes on to `/clarify-idea`), `testing-several` (two alternatives, each with the test that decides between them), `back-to-research` (none chosen; the file names the belief of the agenda that needs an answer first). With `testing-several`, one value proposition per alternative under test.
+Save to `product/solutions/{YYYY-MM-DD-HHMM}-{opportunity-slug}.md`. Three statuses: `chosen` (one alternative goes on to `/design-solution-tests`), `testing-several` (two alternatives, each with the belief that decides between them, tested in `/design-solution-tests`), `back-to-research` (none chosen; the file names the belief of the agenda that needs an answer first). With `testing-several`, one value proposition per alternative under test. The spec comes after the tests: `/write-spec` reads the solutions file and the analyzed tests file. Going straight from `chosen` to `/write-spec` is allowed only when the riskiest belief already carries `real` or `survey` evidence about the solution itself, and the close says which.
 
 ## Anti-patterns
 
@@ -121,6 +134,8 @@ Save to `product/solutions/{YYYY-MM-DD-HHMM}-{opportunity-slug}.md`. Three statu
 - Feasibility judgments invented by the PM — `to check with tech` is the honest cell
 - A comparison where everything comes out `strong` — then the filter measured nothing
 - Skipping the baseline, or writing "do nothing" in its place
-- Turning the exploration into a spec — journeys, stories, and acceptance criteria belong to `/write-spec`, after `/clarify-idea`
+- Turning the exploration into a spec — journeys, stories, and acceptance criteria belong to `/write-spec`, after the tests
+- Reading problem evidence as solution evidence — ten interviews about the pain make desirability `strong` only if somebody in them reacted to this solution
+- Designing the tests inside the solutions file — a multi-week pilot named here is a late step; the cheapest first step is designed in `/design-solution-tests`
 - Registering beliefs of discarded alternatives in the overview
 - Demanding real interviews or a survey before exploring — synthetic and secondary evidence work, as long as every judgment says so in its provenance label
