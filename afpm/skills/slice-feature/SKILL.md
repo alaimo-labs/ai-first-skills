@@ -22,3 +22,5 @@ Input: $ARGUMENTS
 4. **Present and confirm.** Show the full plan in the conversation — never ask to save (or save) a plan the user hasn't seen. Walk them through the belief sequence and the levels; adjust until they own it.
 
 5. **Save** to `product/exposure-plans/{YYYY-MM-DD-HHMM}-{spec-slug}.md` (timestamp = creation date; revise in place without renaming) once the user agrees.
+
+6. **Close in one line:** `/design-metrics` before revealing the first level — what counts as reaching the feature, getting value, coming back, and being satisfied, over the level's audience, and the events the product must log to read it.

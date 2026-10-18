@@ -9,7 +9,11 @@ A feature spec in this method is a **bet backed by evidence**, not an enterprise
 
 ## Language
 
-Write the spec in the same language as the conversation and the product context.
+Write the spec in the language of the conversation — the language the user is writing in now. Evidence files in another language (insights, transcripts, research) do not change it: quotes stay verbatim in their original language, everything around them follows the conversation.
+
+The structure below is written in English only because skill files are. **Translate all of it**: section headings, labels (*Acceptance criteria*, *Traces to*, *Evidence*, *Explored in*, *Tested in*, *Metrics*), the user-story pattern ("As {persona}, I want…, so that…"), and the hypothesis pattern ("We believe… We're wrong if…") — use the natural equivalents in the conversation's language. A spec in Spanish has no English headings. What stays in English are only the fixed tokens: belief scope and risk tags (`[feature: {slug}]`, `[value]`…), provenance labels, result tokens (`passed`, `failed`, `not tested (declared)`, `result no longer applies`), and status keywords.
+
+Downstream skills (`/critique-spec`, `/slice-feature`, `/design-metrics`, `/review-evidence`) find a spec's sections by their meaning — the hypothesis and its refutation clause, the tested-before-spec section — never by the English heading.
 
 ## Structure
 
@@ -59,6 +63,9 @@ Tested in: product/tests/{file}
 - {or} riskiest belief not tested (declared)
 - {if applicable} T{n} — result no longer applies: {what this spec changed}
 
+Metrics: product/metrics/{file}
+{Only once `/design-metrics` has defined them — one line, the metrics are never repeated here. Without a Tested-before-spec section, the line goes right after the Hypothesis.}
+
 ## Assumptions
 {References to `product/overview.md` — the single belief registry; the spec keeps no separate list.}
 - [feature: {slug}] [{risk}] {belief as registered} {— owner: {role}, only when it differs from the default}
@@ -87,6 +94,7 @@ The owner derives from the risk; write it down only when the real owner differs 
 - **Alternatives are linked, not re-argued.** When the idea descends from a solutions file, the spec says which alternatives lost and why in one line each and links the file; it never rewrites the comparison. A spec whose idea skipped the exploration omits the section — the idea brief already records `solutions explored: no (declared)`.
 - **What was tested is fixed.** When the alternative has a tests file (see the `solution-testing` skill), the spec links it under *Tested before spec* with one line per test — result and provenance — and keeps the tested version: the mechanism, who does what, the behavior measured, the segment. A spec decision that changes one of them invalidates that test's result; the spec says so in the same section (`result no longer applies`), and the belief is unverified again for the new version. An alternative that came from an exploration and was never tested declares it: `riskiest belief not tested (declared)`.
 - **The spec is written from a tested alternative without an idea brief.** When the bet is a solutions file plus its analyzed tests file, the opportunity, the persona, the value proposition, what it replaces, and the smallest version come from those files by reference; the spec asks only the detail decisions that remain.
+- **Metrics are linked, not repeated.** Once the feature's AARS metrics exist (see the `product-metrics` skill), the spec carries one `Metrics: product/metrics/{file}` line next to *Tested before spec*; the definitions live in the metrics file.
 - **Accessible.** Short sentences, no jargon a newcomer to the product would trip on.
 
 ## Location

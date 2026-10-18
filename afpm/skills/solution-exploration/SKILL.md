@@ -22,6 +22,9 @@ product/solutions/           alternatives compared for one opportunity, and the 
 product/tests/               solution tests: design, results, decision per alternative (see `solution-testing`)
 product/ideas/               clarified idea briefs — the path without exploration → [feature: {slug}] beliefs
 product/specs/ → product/exposure-plans/
+product/metrics/             the AARS metrics of each feature: audience, signal, threshold, target, events (see `product-metrics`)
+product/data/                usage exports and feedback corpora that enter the analyses (input, never edited)
+product/insights/            … + metrics analyses (metrics-) and feedback analyses (feedback-)
 ```
 
 One solutions file per exploration, named after the opportunity. The tests file that descends from it (`product/tests/`) tests the riskiest belief of each alternative under test; the spec is written from the solutions file and the analyzed tests file, and links them under *Alternatives considered* and *Tested before spec*. `/clarify-idea` is the path **without** exploration — an idea that arrives already decided; an idea brief written over an explored alternative inherits its comparison and value proposition by reference and declares whether the alternative was tested. Skipping the exploration is allowed and declared: the idea brief records `solutions explored: no (declared)`.

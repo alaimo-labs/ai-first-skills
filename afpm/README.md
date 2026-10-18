@@ -4,7 +4,7 @@ Agent skills for discovery and validation with synthetic users. Companion plugin
 
 ## Overview
 
-This plugin gives your coding agent a product-discovery toolkit: frame opportunities before choosing solutions, compare solution alternatives against the evidence, test the chosen ones before building anything, create synthetic personas, interview them, extract insights, run critique panels over your specs, and slice features into exposure plans. It also bridges to real research: design interview guides and surveys, analyze the results, and derive evidence-based personas from the patterns. All artifacts are plain markdown files in your repo under `product/` — no external services.
+This plugin gives your coding agent a product-discovery toolkit: frame opportunities before choosing solutions, compare solution alternatives against the evidence, test the chosen ones before building anything, create synthetic personas, interview them, extract insights, run critique panels over your specs, slice features into exposure plans, and measure them once revealed — AARS metrics from usage data, themes from post-launch feedback. It also bridges to real research: design interview guides and surveys, analyze the results, and derive evidence-based personas from the patterns. All artifacts are plain markdown files in your repo under `product/` — no external services.
 
 Content is written in English; all deliverables come out in the language you work in.
 
@@ -44,6 +44,9 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | `/write-spec`        | Draft an evidence-grounded spec: journey, stories, criteria — from an idea brief or straight from a tested alternative; what was tested is fixed, and a decision that changes it is flagged |
 | `/critique-spec`     | Persona panel critiques a spec/PRD, with synthesis            |
 | `/slice-feature`     | Turn a spec's hypothesis into an Exposure Plan                |
+| `/design-metrics`    | Before revealing a level: the four AARS metrics (acquisition, activation, retention, satisfaction) over the level's target audience — signal, expanded definition, signal threshold, calculation, target reconciled with the exposure plan, events to instrument |
+| `/analyze-metrics`   | Compute the AARS metrics from usage data with a script (numerator, denominator, window), the funnel and the retention curve; mark what is below target, name the pattern, propose ranked hypotheses |
+| `/analyze-feedback`  | Tag post-launch feedback (tickets, reviews, in-app comments, CS notes), group counted themes with severity and verbatims, and check each metrics hypothesis: `supported` / `contradicted` / `no signal`; works on its own too |
 | `/review-evidence`   | Weekly sweep: new evidence vs. beliefs, drift report, corrections log |
 
 ## Knowledge skills
@@ -65,6 +68,8 @@ Model-invoked — the agent loads them automatically when the topic matches.
 | `feature-specs`        | Spec structure: journey, stories, criteria, hypothesis, risk-tagged assumptions |
 | `persona-critique`     | In-character document reviews and panel synthesis                 |
 | `exposure-plans`       | Build ≠ reveal, belief decomposition, level design, validations   |
+| `product-metrics`      | AARS over the target audience: signal, expanded definition, signal threshold, target, events; retention by expected frequency, the funnel, cohort curves, diagnostic patterns, feature vs. business metrics |
+| `feedback-analysis`    | Post-launch feedback: the bias of each source, tagging, counted themes with severity and verbatims, weak signals, checking metrics hypotheses |
 
 ## File conventions
 
@@ -78,7 +83,7 @@ product/
 ├── interviews/          # transcripts, synthetic and real
 ├── interview-guides/    # guides for real-user interviews
 ├── surveys/             # survey questionnaires, each with its distribution plan
-├── insights/            # extracted insights, survey analyses & critique panels
+├── insights/            # extracted insights, survey analyses, critique panels, metrics analyses (metrics-) & feedback analyses (feedback-)
 ├── research/            # secondary research & benchmarks
 ├── journeys/            # user journeys + cognitive friction maps
 ├── opportunities/       # opportunity briefs: problem + segment + signals + research agenda, no solution yet
@@ -87,7 +92,9 @@ product/
 │   └── materials/       # per test: prototype, prompt + input set + answer key, script, capture sheet (written only by /build-solution-test)
 ├── ideas/               # clarified idea briefs — the path without exploration (each names its parent opportunity, or `none (declared)`, the exploration and the tests it came from)
 ├── specs/               # feature specs
-└── exposure-plans/      # exposure plans
+├── exposure-plans/      # exposure plans
+├── metrics/             # AARS metrics of each feature: audience, signal, threshold, target, events
+└── data/                # usage exports and feedback corpora that get analyzed (input, never edited)
 ```
 
 `overview.md` is the **single belief registry**: every unverified belief lives there — never in per-opportunity, per-idea, or per-spec lists — tagged by scope (`[product]`, `[opportunity: {slug}]`, or `[feature: {slug}]`) and risk (`[value]` / `[usability]` / `[feasibility]` / `[viability]`), ranked by impact × uncertainty. Internal products also record their **sponsor**: who funds the product and what they need to see to keep funding it.
@@ -97,9 +104,19 @@ The three scopes mirror an **Opportunity Solution Tree**: `overview.md` (outcome
 - **With exploration:** `/explore-solutions` → `/design-solution-tests` → `/build-solution-test` (once per test that needs material) → run the tests → `/analyze-solution-tests` → `/write-spec` → `/critique-spec` → `/slice-feature`. The spec inherits the opportunity, the persona, the value proposition, and the tested version from the solutions and tests files; a spec decision that changes what a test covered is flagged, and the belief is unverified again.
 - **Without exploration** (the idea arrives decided): `/clarify-idea` → `/write-spec`, as before.
 
+Both end in the same loop after the reveal:
+
+```
+/slice-feature → /design-metrics → reveal a level, collect data → /analyze-metrics → /analyze-feedback
+                       ↑                                                                  │
+                       └──────────── measure again ←── the PM decides the improvement ←───┘
+```
+
+`/design-metrics` fixes what counts as reaching the feature, getting value, coming back, and being satisfied — each a percentage of the level's target audience, never "all users", with its target set before the data. `/analyze-metrics` says **what** is happening (computed with a script, never by eye); `/analyze-feedback` says **why**, and which of the metrics' hypotheses the feedback supports. Neither chooses the improvement.
+
 The middle levels are optional, but skipping them is a declared decision: the idea brief records `opportunity: none (declared)` and registers the problem it assumes as a belief, `solutions explored: no (declared)` when the problem was framed but the idea never competed with alternatives, or `solutions tested: no (declared)` when it competed but was never tested. Problem evidence is not solution evidence: ten interviews about the pain prove the pain, and the alternative's value belief stays open until someone reacts to the solution itself — that is what the tests are for. Runs with colleagues, classmates, or acted roles are rehearsals (`synthetic`) and never move a belief.
 
-As evidence arrives, beliefs in `overview.md` get a status appended on the belief's own line — `— confirmed/contradicted/weakened by [file] (date)` (keywords stay in English, like `source:` values; no status = still unverified). Only evidence from real users confirms; synthetic evidence just makes a belief promising. `/review-evidence`, `/extract-insights`, `/analyze-survey`, and `/analyze-solution-tests` (for `real` results only) propose these annotations — you approve before anything is written.
+As evidence arrives, beliefs in `overview.md` get a status appended on the belief's own line — `— confirmed/contradicted/weakened by [file] (date)` (keywords stay in English, like `source:` values; no status = still unverified). Only evidence from real users confirms; synthetic evidence just makes a belief promising. `/review-evidence`, `/extract-insights`, `/analyze-survey`, `/analyze-solution-tests`, `/analyze-metrics`, and `/analyze-feedback` (the last three for `real` results only) propose these annotations — you approve before anything is written.
 
 ## License
 

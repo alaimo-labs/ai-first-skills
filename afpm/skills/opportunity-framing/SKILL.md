@@ -20,6 +20,9 @@ product/solutions/           alternatives compared for one opportunity, and the 
 product/tests/               solution tests: design, results, decision per alternative (see `solution-testing`)
 product/ideas/               clarified idea briefs — the path without exploration, each with a parent opportunity (optional, declared) → [feature: {slug}] beliefs
 product/specs/ → product/exposure-plans/
+product/metrics/             the AARS metrics of each feature: audience, signal, threshold, target, events (see `product-metrics`)
+product/data/                usage exports and feedback corpora that enter the analyses (input, never edited)
+product/insights/            … + metrics analyses (metrics-) and feedback analyses (feedback-)
 ```
 
 `product/overview.md` stays the single belief registry: opportunity beliefs are appended there with the `[opportunity: {slug}]` scope tag, and an idea brief that hangs from an opportunity inherits those beliefs by reference instead of re-registering them.
