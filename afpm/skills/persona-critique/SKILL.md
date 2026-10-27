@@ -51,3 +51,4 @@ Save panels to `product/insights/{YYYY-MM-DD-HHMM}-critique-{spec-slug}.md`.
 
 - A panel made only of `primary` personas — it returns a complacent reading; documents with purchase, permission, or scope implications need at least one `tertiary` or `negative` voice
 - Reading a `negative` persona's low rating as evidence against the idea — it is evidence about the scope, not about the target segment
+- Using personas to review internal documents aimed at stakeholders (an update, a brief, a results report for leadership, legal, marketing) — personas are the product's users and buyers, not the company that builds it; that is what `/stakeholder-review` is for (see `stakeholder-critique`)

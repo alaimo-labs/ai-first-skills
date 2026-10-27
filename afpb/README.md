@@ -52,4 +52,4 @@ If the repo also runs discovery (for example with the companion `afpm` plugin), 
 
 ## License
 
-[CC BY-SA 4.0](../LICENSE) © [Alaimo Labs](https://alaimolabs.com). Use, adapt, and share freely — credit Alaimo Labs and keep derivatives under the same license.
+[CC BY-NC 4.0](../LICENSE) © [Alaimo Labs](https://alaimolabs.com). Use, adapt, and share for non-commercial purposes — credit Alaimo Labs and indicate if you made changes. For commercial use, contact info@alaimolabs.com.

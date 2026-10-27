@@ -4,7 +4,7 @@ Agent skills for discovery and validation with synthetic users. Companion plugin
 
 ## Overview
 
-This plugin gives your coding agent a product-discovery toolkit: frame opportunities before choosing solutions, compare solution alternatives against the evidence, test the chosen ones before building anything, create synthetic personas, interview them, extract insights, run critique panels over your specs, slice features into exposure plans, and measure them once revealed — AARS metrics from usage data, themes from post-launch feedback. It also bridges to real research: design interview guides and surveys, analyze the results, and derive evidence-based personas from the patterns. All artifacts are plain markdown files in your repo under `product/` — no external services.
+This plugin gives your coding agent a product-discovery toolkit: frame opportunities before choosing solutions, compare solution alternatives against the evidence, test the chosen ones before building anything, create synthetic personas, interview them, extract insights, run critique panels over your specs, rehearse how a stakeholder of your company will read an update before the meeting, slice features into exposure plans, and measure them once revealed — AARS metrics from usage data, themes from post-launch feedback. It also bridges to real research: design interview guides and surveys, analyze the results, and derive evidence-based personas from the patterns. All artifacts are plain markdown files in your repo under `product/` — no external services.
 
 Content is written in English; all deliverables come out in the language you work in.
 
@@ -47,6 +47,7 @@ User-invoked skills — you trigger them as slash commands; they never auto-load
 | `/design-metrics`    | Before revealing a level: the four AARS metrics (acquisition, activation, retention, satisfaction) over the level's target audience — signal, expanded definition, signal threshold, calculation, target reconciled with the exposure plan, events to instrument |
 | `/analyze-metrics`   | Compute the AARS metrics from usage data with a script (numerator, denominator, window), the funnel and the retention curve; mark what is below target, name the pattern, propose ranked hypotheses |
 | `/analyze-feedback`  | Tag post-launch feedback (tickets, reviews, in-app comments, CS notes), group counted themes with severity and verbatims, and check each metrics hypothesis: `supported` / `contradicted` / `no signal`; works on its own too |
+| `/stakeholder-review` | Rehearse the meeting: a stakeholder of the company (CEO, legal, marketing, engineering, the sponsor) reads an update, brief, or results report in character — questions, what they miss to decide, worries, and `approve` / `ask-for-more` / `stop`; asks role, stake, and how much they know first; never rewrites the document |
 | `/review-evidence`   | Weekly sweep: new evidence vs. beliefs, drift report, corrections log |
 
 ## Knowledge skills
@@ -67,6 +68,7 @@ Model-invoked — the agent loads them automatically when the topic matches.
 | `cognitive-frictions`  | The MFC lens: four friction categories, severity, opportunity bar |
 | `feature-specs`        | Spec structure: journey, stories, criteria, hypothesis, risk-tagged assumptions |
 | `persona-critique`     | In-character document reviews and panel synthesis                 |
+| `stakeholder-critique` | Stakeholder vs. persona, the three basics to get into character, reading only what is on the page, the per-stakeholder reaction and decision, tensions between stakeholders |
 | `exposure-plans`       | Build ≠ reveal, belief decomposition, level design, validations   |
 | `product-metrics`      | AARS over the target audience: signal, expanded definition, signal threshold, target, events; retention by expected frequency, the funnel, cohort curves, diagnostic patterns, feature vs. business metrics |
 | `feedback-analysis`    | Post-launch feedback: the bias of each source, tagging, counted themes with severity and verbatims, weak signals, checking metrics hypotheses |
@@ -83,7 +85,7 @@ product/
 ├── interviews/          # transcripts, synthetic and real
 ├── interview-guides/    # guides for real-user interviews
 ├── surveys/             # survey questionnaires, each with its distribution plan
-├── insights/            # extracted insights, survey analyses, critique panels, metrics analyses (metrics-) & feedback analyses (feedback-)
+├── insights/            # extracted insights, survey analyses, critique panels, stakeholder reviews (stakeholder-review-), metrics analyses (metrics-) & feedback analyses (feedback-)
 ├── research/            # secondary research & benchmarks
 ├── journeys/            # user journeys + cognitive friction maps
 ├── opportunities/       # opportunity briefs: problem + segment + signals + research agenda, no solution yet
@@ -94,8 +96,11 @@ product/
 ├── specs/               # feature specs
 ├── exposure-plans/      # exposure plans
 ├── metrics/             # AARS metrics of each feature: audience, signal, threshold, target, events
+├── stakeholders/        # one file per stakeholder of the company that builds the product: role, what they have at stake, how much they know
 └── data/                # usage exports and feedback corpora that get analyzed (input, never edited)
 ```
+
+**Personas vs. stakeholders.** Personas (`product/personas/`) are the product's users and buyers — they review specs with `/critique-spec`. Stakeholders (`product/stakeholders/`) are people in the company that builds the product — CEO, legal, marketing, engineering, the sponsor — with budget, risk, or reputation at stake; they review internal documents with `/stakeholder-review`. Neither stands in for the other, and a synthetic stakeholder's reaction never moves a belief.
 
 `overview.md` is the **single belief registry**: every unverified belief lives there — never in per-opportunity, per-idea, or per-spec lists — tagged by scope (`[product]`, `[opportunity: {slug}]`, or `[feature: {slug}]`) and risk (`[value]` / `[usability]` / `[feasibility]` / `[viability]`), ranked by impact × uncertainty. Internal products also record their **sponsor**: who funds the product and what they need to see to keep funding it.
 
@@ -120,4 +125,4 @@ As evidence arrives, beliefs in `overview.md` get a status appended on the belie
 
 ## License
 
-[CC BY-SA 4.0](../LICENSE) © [Alaimo Labs](https://alaimolabs.com). Use, adapt, and share freely — credit Alaimo Labs and keep derivatives under the same license.
+[CC BY-NC 4.0](../LICENSE) © [Alaimo Labs](https://alaimolabs.com). Use, adapt, and share for non-commercial purposes — credit Alaimo Labs and indicate if you made changes. For commercial use, contact info@alaimolabs.com.
